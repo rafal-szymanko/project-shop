@@ -2,41 +2,32 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import { createMuiTheme, StylesProvider, ThemeProvider } from '@material-ui/core/styles';
-import { CssBaseline } from '@material-ui/core';
-
 import { store } from './redux/store';
 
 import { MainLayout } from './components/layout/MainLayout/MainLayout';
 import { Homepage } from './components/views/Homepage/Homepage';
-import { Post } from './components/views/Post/Post';
-import { PostEdit } from './components/views/PostEdit/PostEdit';
-import { PostAdd } from './components/views/PostAdd/PostAdd';
+import {Kits} from './components/views/Kits/Kits';
+import {GiftsAndAccesories} from './components/views/GiftsAndAccesories/GiftsAndAccesories';
+import {Kids} from './components/views/Kids/Kids';
+import {Books} from './components/views/Books/Books';
 import { NotFound } from './components/views/NotFound/NotFound';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: '#2B4C6F' },
-  },
-});
+import './styles/global.scss';
+
 
 const App = () => (
   <Provider store={store}>
     <BrowserRouter>
-      <StylesProvider injectFirst>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <MainLayout>
-            <Switch>
-              <Route exact path='/' component={Homepage} />
-              <Route exact path='/post/add' component={PostAdd} />
-              <Route exact path='/post/:id' component={Post} />
-              <Route exact path='/post/:id/edit' component={PostEdit} />
-              <Route path='*' component={NotFound} />
-            </Switch>
-          </MainLayout>
-        </ThemeProvider>
-      </StylesProvider>
+      <MainLayout>
+        <Switch>
+          <Route exact path='/' component={Homepage} />
+          <Route exact path='/kits' component={Kits}/>
+          <Route exact path='/gifts' component={GiftsAndAccesories}/>
+          <Route exact path='/kids' component={Kids}/>
+          <Route exact path='/books' component={Books}/>
+          <Route path='*' component={NotFound} />
+        </Switch>
+      </MainLayout>
     </BrowserRouter>
   </Provider>
 );

@@ -1,4 +1,31 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    
+    .upperNavigation {
+        display: flex;
+        justify-content: space-between;
+        .logoContainer {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: $color-dark;
+            h2 {
+                padding-left: 20px;
+            };
+        }
+        .buttonsContainer {
+            display: flex;
+            align-items: center;
+        }
+    }
+    .bottomNavigation {
+        display: flex;
+        justify-content: space-evenly;
+        font-family: $font_second;
+        font-weight: 700;
+    }
+}

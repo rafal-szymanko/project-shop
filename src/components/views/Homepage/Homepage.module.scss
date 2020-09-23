@@ -1,4 +1,12 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+    height: 200vh;
+    .paper {
+        height: 50vh;
+        .image {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
