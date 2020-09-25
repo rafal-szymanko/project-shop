@@ -8,6 +8,7 @@ const booksSchema = new mongoose.Schema({
   description: { type: String, required: true },
   image: { type: String, required: true },
   bestseller: { type: Boolean, required: true },
+  section: {type: String, required: true},
 });
 
-module.exports = mongoose.model('Books', booksSchema);
+module.exports = mongoose.model('Book', booksSchema,'books');

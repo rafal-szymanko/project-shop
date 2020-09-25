@@ -1,8 +1,10 @@
+import axios from 'axios';
+
 /* selectors */
-export const getAll = ({posts}) => posts.data;
+export const getAllForKids = ({kids}) => kids.data;
 
 /* action name creator */
-const reducerName = 'posts';
+const reducerName = 'kids';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
@@ -16,6 +18,22 @@ export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 
 /* thunk creators */
+
+export const fetchBestsellerForKids = () => {
+
+  return (dispatch, getState) => {    
+    dispatch(fetchStarted());
+    axios
+      .get('http://localhost:8000/api/kids')
+      .then(res => {
+        dispatch(fetchSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(fetchError(err.message || true));
+      });
+  };
+};
+
 
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {

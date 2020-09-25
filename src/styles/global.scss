@@ -10,11 +10,10 @@
     font-family: $font-main;
     font-size: ($base-size * 1.1);
     color: $color-dark;
-    width: 90%;
     max-width: 1400px;
     margin: 0 auto;
     overflow-y: scroll;
-  
+    width: 90%;  
   }
   
   a {

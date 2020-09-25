@@ -3,11 +3,19 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { initialState } from './initialState';
-import { reducer as postsReducer } from './postsRedux';
+import { reducer as kitsReducer } from './kitsRedux';
+import { reducer as booksReducer } from './booksRedux';
+import { reducer as kidsReducer } from './kidsRedux';
+import { reducer as accesoriesReducer } from './accesoriesRedux';
+import { reducer as bannersReducer } from './bannersRedux';
 
 // define reducers
 const reducers = {
-  posts: postsReducer,
+  kits: kitsReducer,
+  books: booksReducer,
+  kids: kidsReducer,
+  accesories: accesoriesReducer,
+  banners: bannersReducer,
 };
 
 // add blank reducers for initial state properties without reducers

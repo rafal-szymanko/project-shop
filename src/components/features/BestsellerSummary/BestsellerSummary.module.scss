@@ -1,0 +1,29 @@
+@import '../../../styles/settings.scss';
+
+.root {
+    width: 18%;
+    .card {
+        // width: 250px;
+        margin: 0 auto;
+        transition: 0.3;
+        box-shadow: 0 8px 40px -12px rgba(0,0,0,0.3);
+        min-height: 280px;
+        &:hover {
+            box-shadow: 0 16px 70px -12.125px rgba(0,0,0,0.3);
+        };
+        .media {
+            padding-top: 56.25%;
+            height: 50px;
+            object-fit: contain;
+        }
+        .content {
+            text-align: left;
+            .header {
+                font-weight: bold,
+            }
+            .subheader {
+                line-height: 1.8,
+            }
+        };
+    }
+}

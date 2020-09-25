@@ -8,6 +8,7 @@ const kitsSchema = new mongoose.Schema({
   description: { type: Array, required: true },
   image: { type: String, required: true },
   bestseller: { type: Boolean, required: true },
+  section: {type: String, required: true},
 });
 
-module.exports = mongoose.model('Kits', kitsSchema);
+module.exports = mongoose.model('Kit', kitsSchema,'kits');

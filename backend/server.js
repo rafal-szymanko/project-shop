@@ -2,26 +2,17 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
-const formidable = require('express-formidable');
-const uniqid = require('uniqid');
 
 const kitsRoutes = require('./routes/kits.routes');
 const accesoriesRoutes = require('./routes/accesories.routes');
 const kidsRoutes = require('./routes/kids.routes');
 const booksRoutes = require('./routes/books.routes');
+const bannersRoutes = require('./routes/banners.routes');
 
 const app = express();
 
 /* MIDDLEWARE */
 app.use(cors());
-app.use(formidable({ uploadDir: './public/uploads' }, [{
-  event: 'fileBegin', // on every file upload...
-  action: (req, res, next, name, file) => {
-    const fileName = uniqid() + '.' + file.name.split('.')[1];
-    file.path = __dirname + '/public/uploads/photo_' + fileName; // ...move the file to public/uploads with unique name
-  },
-},
-]));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -30,6 +21,7 @@ app.use('/api', kitsRoutes);
 app.use('/api', kidsRoutes);
 app.use('/api', booksRoutes);
 app.use('/api', accesoriesRoutes);
+app.use('/api', bannersRoutes);
 
 /* API ERROR PAGES */
 app.use('/api', (req, res) => {
@@ -44,7 +36,7 @@ app.use('*', (req, res) => {
 });
 
 /* MONGOOSE */
-mongoose.connect('mongodb://localhost:27017/bulletinBoard', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
+mongoose.connect('mongodb://localhost:27017/ManUtdStore', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 const db = mongoose.connection;
 db.once('open', () => {
   console.log('Successfully connected to the database');

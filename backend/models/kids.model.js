@@ -8,6 +8,7 @@ const kidsSchema = new mongoose.Schema({
   description: { type: Array, required: true },
   image: { type: String, required: true },
   bestseller: { type: Boolean, required: true },
+  section: {type: String, required: true},
 });
 
-module.exports = mongoose.model('Kids', kidsSchema);
+module.exports = mongoose.model('Kid', kidsSchema,'kids');

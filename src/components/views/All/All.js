@@ -6,26 +6,14 @@ import clsx from 'clsx';
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
-import styles from './Cart.module.scss';
+import styles from './All.module.scss';
 
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
-import Button from '@material-ui/core/Button'; 
-
-
-const Component = ({className, children}) => {
-
-  return(
-    <div className={clsx(className, styles.root)}>
-      <Button
-        className={styles.button}
-        variant="contained"
-        startIcon={<ShoppingBasketIcon />}
-      >
-        Shopping Cart    
-      </Button>
-    </div>
-  );
-};
+const Component = ({className, children}) => (
+  <div className={clsx(className, styles.root)}>
+    <h2>All</h2>
+    {children}
+  </div>
+);
 
 Component.propTypes = {
   children: PropTypes.node,
@@ -43,7 +31,7 @@ Component.propTypes = {
 // const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  Component as Cart,
-  // Container as Cart,
-  Component as CartComponent,
+  Component as All,
+  // Container as All,
+  Component as AllComponent,
 };

@@ -1,0 +1,51 @@
+@import '../../../styles/settings.scss';
+
+.root {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+
+    .logoContainer {
+        display: flex;
+        align-items: center;
+    }
+    .sitemap {
+        border-left: 1px solid $color-second;
+        .sitemapContainer {
+            display: flex;
+            flex-direction: column;
+            padding-left: $base-size;
+            a {
+                padding-bottom: 10px
+            }
+        }
+
+    }
+   
+    .newsletter {
+        .form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .input {
+                width: 100%;
+                padding-bottom: $base-size;
+                color: white
+            }
+            .button {
+                color: $color-light;
+                background-color: $color-first;
+                &:hover {
+                    color: $color-first;
+                    background-color: $color-light;
+                }
+            }
+
+        }
+
+    }
+    .logoContainer, .sitemap, .newsletter {
+        width: 30%;
+    }
+}

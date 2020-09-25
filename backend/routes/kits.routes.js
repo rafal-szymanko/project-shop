@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const Kits = require('../models/kits.model');
+const Kit = require('../models/kits.model');
 
 router.get('/kits', async (req, res) => {
   try {
-    const result = await Kits
+    const result = await Kit
       .find({bestseller: true})
-      .select('name price image');
-    if(!result) res.status(404).json({ post: 'Not found' });
+      .select('name price image section');
+    if(!result) res.status(404).json({ kits: 'Not found' });
     else res.json(result);
   }
   catch(err) {

@@ -1,14 +1,12 @@
 @import '../../../styles/settings.scss';
 
 .root {
-    .cartIcon {
-        cursor: pointer;
-        width: 30px;
-        height: 30px;
+    .button {
+    color: white;
+    background-color: $color-first;
+    &:hover {
+        color: $color-dark;
+        background-color: $color-second;
     }
-    .cart {
-        width: 100px;
-        height: 100px;
-        background: white;
     }
 }

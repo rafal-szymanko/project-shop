@@ -30,10 +30,11 @@ const Component = ({className, children}) => {
         </div>
       </div>
       <div className={styles.bottomNavigation}>
+        <Link to='/all'>All PRODUCTS</Link>
         <Link to='/kits'>KITS</Link>
         <Link to='/kids'>KIDS</Link>
         <Link to='/books'>BOOKS</Link>
-        <Link to='/gifts'>GIFTS & ACCESSORIES</Link>
+        <Link to='/accessories'>GIFTS & ACCESSORIES</Link>
       </div>
     </div>
   );
