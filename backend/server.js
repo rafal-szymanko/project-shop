@@ -8,6 +8,7 @@ const accesoriesRoutes = require('./routes/accesories.routes');
 const kidsRoutes = require('./routes/kids.routes');
 const booksRoutes = require('./routes/books.routes');
 const bannersRoutes = require('./routes/banners.routes');
+const newsletterRoutes = require('./routes/newsletter.routes');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use('/api', kidsRoutes);
 app.use('/api', booksRoutes);
 app.use('/api', accesoriesRoutes);
 app.use('/api', bannersRoutes);
+app.use('/api', newsletterRoutes);
 
 /* API ERROR PAGES */
 app.use('/api', (req, res) => {

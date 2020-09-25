@@ -1,0 +1,31 @@
+@import '../../../styles/settings.scss';
+
+.root {
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        .success {
+            color: $color-success;
+        }
+        .failure {
+            color: $color-failure;
+        }
+        div {
+            width: 100%;
+            .input {
+                padding-bottom: $base-size;
+            }
+        }
+        .button {
+            color: $color-light;
+            background-color: $color-first;
+            &:hover {
+                color: $color-first;
+                background-color: $color-light;
+            }
+        }
+
+    }
+}

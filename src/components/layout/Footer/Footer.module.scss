@@ -21,30 +21,6 @@
         }
 
     }
-   
-    .newsletter {
-        .form {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            .input {
-                width: 100%;
-                padding-bottom: $base-size;
-                color: white
-            }
-            .button {
-                color: $color-light;
-                background-color: $color-first;
-                &:hover {
-                    color: $color-first;
-                    background-color: $color-light;
-                }
-            }
-
-        }
-
-    }
     .logoContainer, .sitemap, .newsletter {
         width: 30%;
     }

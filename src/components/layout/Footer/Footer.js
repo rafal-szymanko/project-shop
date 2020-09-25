@@ -1,29 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
 import {Link} from 'react-router-dom';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import {NewsletterForm} from '../../features/NewsletterForm/NewsletterForm';
+
 
 import styles from './Footer.module.scss';
-import TextField from '@material-ui/core/TextField';
-import { Button } from '@material-ui/core';
 
 const Component = ({className, children}) => {
-
-  const [formContent, setFormContent]= useState({});
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormContent({
-      ...formContent,
-      [name]: value,
-    });
-  };
-  
-
   return(
     <div className={clsx(className, styles.root)}>
       <div>
@@ -49,10 +35,7 @@ const Component = ({className, children}) => {
       <div className={styles.newsletter}>
         <h2>Newsletter</h2>
         <p> Do you want to receive exclusive emails with discounts and product information?</p>
-        <form className={styles.form}>
-          <TextField className={styles.input}id="standard-basic" label="Your email" name="mail" onChange={handleChange}/>
-          <Button className={styles.button}>Subscribe</Button>
-        </form>
+        <NewsletterForm/>
       </div>
     </div>
   );
@@ -62,13 +45,13 @@ Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
 };
+// const mapStateToProps = (state) => ({
 
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
 // });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
+
+// const mapDispatchToProps = (dispatch, props) => ({
+//   addToNewsletter: (data) => dispatch(addPostRequest(data)),
 // });
 
 // const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
