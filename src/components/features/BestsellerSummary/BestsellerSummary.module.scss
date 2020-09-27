@@ -2,8 +2,8 @@
 
 .root {
     width: 18%;
+    padding: 20px 0;
     .card {
-        // width: 250px;
         margin: 0 auto;
         transition: 0.3;
         box-shadow: 0 8px 40px -12px rgba(0,0,0,0.3);
@@ -18,8 +18,13 @@
         }
         .content {
             text-align: left;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             .header {
-                font-weight: bold,
+                font-weight: bold;
+                min-height: 150px;
             }
             .subheader {
                 line-height: 1.8,

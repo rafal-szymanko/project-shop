@@ -1,37 +1,57 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import { BestsellerSummary } from '../../features/BestsellerSummary/BestsellerSummary';
+
+import { connect } from 'react-redux';
+import {getAll, fetchAll} from '../../../redux/productsRedux';
 
 import styles from './All.module.scss';
 
-const Component = ({className, children}) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>All</h2>
-    {children}
-  </div>
-);
+import {isNotEmpty} from '../../../utils/checkIfObjNotEmpty';
+
+
+const Component = ({className, children, allProducts, fetchAllItems}) => {
+
+
+  useEffect(() => {fetchAllItems();}, [fetchAllItems]); 
+
+  const {kids, kits, accessories, books} = allProducts;
+
+  return(
+    <div className={clsx(className, styles.root)}>
+      <div className={styles.items}>
+        {isNotEmpty(kits.data) ? kits.data.map(kit => <BestsellerSummary key={kit._id} {...kit}/>) : null}
+        {isNotEmpty(books.data) ? books.data.map(book => <BestsellerSummary key={book._id} {...book}/>) : null}
+        {isNotEmpty(kids.data) ? kids.data.map(kid => <BestsellerSummary key={kid._id} {...kid}/>) : null}
+        {isNotEmpty(accessories.data) ? accessories.data.map(accessory => <BestsellerSummary key={accessory._id} {...accessory}/>) : null}
+      </div>
+    </div>
+  );
+};
 
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  fetchAllItems: PropTypes.func,
+  allProducts: PropTypes.object,
 };
 
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
-// });
+const mapStateToProps = state => ({
+  allProducts: getAll(state),
+});
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = dispatch => ({
+  fetchAllItems: () => dispatch(fetchAll()),
+});
 
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+
 
 export {
-  Component as All,
-  // Container as All,
+  // Component as Homepage,
+  Container as All,
   Component as AllComponent,
 };

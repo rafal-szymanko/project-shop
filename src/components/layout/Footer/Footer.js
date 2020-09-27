@@ -8,6 +8,11 @@ import {NewsletterForm} from '../../features/NewsletterForm/NewsletterForm';
 
 
 import styles from './Footer.module.scss';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const Component = ({className, children}) => {
   return(
@@ -25,7 +30,6 @@ const Component = ({className, children}) => {
       <div className={styles.sitemap}>
         <div className={styles.sitemapContainer}>
           <h2>Sitemap</h2>
-          <Link to='/all'>All Products</Link>
           <Link to='/kits'>Kits</Link>
           <Link to='/kids'>Kids</Link>
           <Link to='/books'>Books</Link>
@@ -36,6 +40,26 @@ const Component = ({className, children}) => {
         <h2>Newsletter</h2>
         <p> Do you want to receive exclusive emails with discounts and product information?</p>
         <NewsletterForm/>
+      </div>
+      <div className={styles.socialMedia}>
+        <p>Visit us on our social media</p>
+        <div className={styles.icons}>
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+            <FacebookIcon/>
+          </a>
+          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+            <TwitterIcon/>
+          </a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+            <InstagramIcon/>
+          </a>
+          <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+            <YouTubeIcon/>
+          </a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+            <LinkedInIcon/>
+          </a>
+        </div>
       </div>
     </div>
   );

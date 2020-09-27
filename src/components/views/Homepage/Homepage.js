@@ -7,10 +7,7 @@ import { BestsellerSummary } from '../../features/BestsellerSummary/BestsellerSu
 import {Baner} from '../../features/Baner/Baner';
 
 import { connect } from 'react-redux';
-import { getAllKits, fetchBestsellerKits } from '../../../redux/kitsRedux';
-import { getAllBooks, fetchBestsellerBooks } from '../../../redux/booksRedux';
-import { getAllForKids, fetchBestsellerForKids } from '../../../redux/kidsRedux';
-import { getAllAccesories, fetchBestsellerAccesories } from '../../../redux/accesoriesRedux';
+import {getAllBestsellers, fetchBestsellers} from '../../../redux/productsRedux';
 
 import styles from './Homepage.module.scss';
 
@@ -20,13 +17,14 @@ import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn';
 
 import {isNotEmpty} from '../../../utils/checkIfObjNotEmpty';
 
-const Component = ({className, children, kits, books, kids, accessories, fetchKits, fetchBooks, fetchForKids, fetchAccesories}) => {
+const Component = ({className, children, bestsellers, fetchBestsellersItems}) => {
 
-  useEffect(() => {fetchKits();}, [fetchKits]);
-  useEffect(() => {fetchBooks();}, [fetchBooks]);
-  useEffect(() => {fetchForKids();}, [fetchForKids]);
-  useEffect(() => {fetchAccesories();}, [fetchAccesories]);
+  useEffect(() => {fetchBestsellersItems();}, [fetchBestsellersItems]);
 
+  const {kids, kits, accessories, books} = bestsellers;
+
+  console.log(bestsellers);
+  
   return(
     <div className={clsx(className, styles.root)}>
       {children}
@@ -36,10 +34,10 @@ const Component = ({className, children, kits, books, kids, accessories, fetchKi
           <h2 className={styles.title}>Bestsellers</h2>
         </div>
         <div className={styles.items}>
-          {isNotEmpty(kits) ? kits.map(kit => <BestsellerSummary key={kit._id} {...kit}/>) : null}
-          {isNotEmpty(books) ? books.map(book => <BestsellerSummary key={book._id} {...book}/>) : null}
-          {isNotEmpty(kids) ? kids.map(kid => <BestsellerSummary key={kid._id} {...kid}/>) : null}
-          {isNotEmpty(accessories) ? accessories.map(accessory => <BestsellerSummary key={accessory._id} {...accessory}/>) : null}
+          {isNotEmpty(kits.data) ? kits.data.map(kit => <BestsellerSummary key={kit._id} {...kit}/>) : null}
+          {isNotEmpty(books.data) ? books.data.map(book => <BestsellerSummary key={book._id} {...book}/>) : null}
+          {isNotEmpty(kids.data) ? kids.data.map(kid => <BestsellerSummary key={kid._id} {...kid}/>) : null}
+          {isNotEmpty(accessories.data) ? accessories.data.map(accessory => <BestsellerSummary key={accessory._id} {...accessory}/>) : null}
         </div>
       </div>
       <div className={styles.container}>
@@ -68,28 +66,17 @@ const Component = ({className, children, kits, books, kids, accessories, fetchKi
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  kits: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  books: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  kids: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  accessories: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  fetchKits: PropTypes.func,
-  fetchBooks: PropTypes.func,
-  fetchForKids: PropTypes.func,
-  fetchAccesories: PropTypes.func,
+  bestsellers: PropTypes.object,
+  fetchBestsellersItems: PropTypes.func,
+
 };
 
 const mapStateToProps = state => ({
-  kits: getAllKits(state),
-  books: getAllBooks(state),
-  kids: getAllForKids(state),
-  accessories: getAllAccesories(state),
+  bestsellers: getAllBestsellers(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchKits: () => dispatch(fetchBestsellerKits()),
-  fetchBooks: () => dispatch(fetchBestsellerBooks()),
-  fetchForKids: () => dispatch(fetchBestsellerForKids()),
-  fetchAccesories: () => dispatch(fetchBestsellerAccesories()),
+  fetchBestsellersItems: () => dispatch(fetchBestsellers()),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

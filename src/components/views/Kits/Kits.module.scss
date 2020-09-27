@@ -1,4 +1,9 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+    .items {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}

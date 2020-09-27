@@ -6,7 +6,6 @@ import { store } from './redux/store';
 
 import { MainLayout } from './components/layout/MainLayout/MainLayout';
 import { Homepage } from './components/views/Homepage/Homepage';
-import { All } from './components/views/All/All';
 import {Kits} from './components/views/Kits/Kits';
 import {Kit} from './components/views/Kit/Kit';
 import {GiftsAndAccesories} from './components/views/GiftsAndAccesories/GiftsAndAccesories';
@@ -15,6 +14,7 @@ import {Kids} from './components/views/Kids/Kids';
 import {Books} from './components/views/Books/Books';
 import {Book} from './components/views/Book/Book';
 import { NotFound } from './components/views/NotFound/NotFound';
+import { All } from './components/views/All/All';
 
 import './styles/global.scss';
 
@@ -25,9 +25,9 @@ const App = () => (
       <MainLayout>
         <Switch>
           <Route exact path='/' component={Homepage} />
-          <Route exact path='/all' component={All} />
           <Route exact path='/kits' component={Kits}/>
           <Route exact path='/kits/:id' component={Kit}/>
+          <Route exact path='/all' component={All}/>
           <Route exact path='/accessories' component={GiftsAndAccesories}/>
           <Route exact path='/accessories/:id' component={Accessory}/>
           <Route exact path='/kids' component={Kids}/>

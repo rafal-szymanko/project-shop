@@ -42,7 +42,7 @@ const Component = ({className}) => {
         {response === 200 ? <p className={styles.success}>You’re subscribed. We’ll keep you up to date with all things.</p> : null}
         {response === 500 ? <p className={styles.failure}>Something went wrong. Please try again.</p> : null}
         <TextValidator className={styles.input} id="standard-basic" label="Your email" name="mail" value={formContent.mail} onChange={handleChange} validators={['required', 'isEmail']} errorMessages={['this field is required', 'email is not valid']} />
-        <Button className={styles.button} type="submit">Subscribe</Button>
+        <Button className={styles.button} variant="contained" type="submit">Subscribe</Button>
       </ValidatorForm>
     </div>
   );
