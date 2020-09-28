@@ -1,4 +1,35 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+    .details {
+        display: flex;
+        .media {
+            height: 500px;
+            width: 60%;
+            object-fit: contain;
+        }
+        .description {
+            .form {
+                display: flex;
+                flex-direction: column;
+                div {
+                    padding-bottom: 10px;;
+                }
+            }
+            .detailsList {
+                display: flex;
+                flex-direction: column;
+                padding-top: $base-size * 2;
+                padding-left: 0;
+                .detailsItem {
+                    padding: $base-size*0.5 0;
+                    list-style: none;
+                }
+                .detailsHeader {
+                    border-bottom: 1px solid $color-second;
+                }
+            }
+        }
+    }
+
+}

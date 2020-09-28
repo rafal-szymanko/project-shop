@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
 
-import { BestsellerSummary } from '../../features/BestsellerSummary/BestsellerSummary';
+import {ItemSummary} from '../../features/ItemSummary/ItemSummary';
 
 import { connect } from 'react-redux';
 import {getAllItemsForKids, fetchForKids} from '../../../redux/productsRedux';
@@ -20,7 +20,7 @@ const Component = ({className, children, forKids, fetchAllItemsForKids}) => {
   return(
     <div className={clsx(className, styles.root)}>
       <div className={styles.items}>
-        {isNotEmpty(forKids.data) ? forKids.data.map(kit => <BestsellerSummary key={kit._id} {...kit}/>) : null}
+        {isNotEmpty(forKids.data) ? forKids.data.map(kit => <ItemSummary key={kit._id} {...kit}/>) : null}
       </div>
     </div>
   );

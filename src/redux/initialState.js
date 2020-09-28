@@ -29,6 +29,13 @@ export const initialState = {
       },
     },
   },
+  product: {
+    data: {},
+    loading: {
+      active: false,
+      error: false,
+    },
+  },
   cart: [],
   banners: {
     data: {},

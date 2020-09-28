@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
 
-import { BestsellerSummary } from '../../features/BestsellerSummary/BestsellerSummary';
+import {ItemSummary} from '../../features/ItemSummary/ItemSummary';
 
 import { connect } from 'react-redux';
 import {getAllKits, fetchKits} from '../../../redux/productsRedux';
@@ -14,14 +14,13 @@ import {isNotEmpty} from '../../../utils/checkIfObjNotEmpty';
 
 
 const Component = ({className, children, kits, fetchAllKits}) => {
-
-
+  
   useEffect(() => {fetchAllKits();}, [fetchAllKits]); 
 
   return(
     <div className={clsx(className, styles.root)}>
       <div className={styles.items}>
-        {isNotEmpty(kits.data) ? kits.data.map(kit => <BestsellerSummary key={kit._id} {...kit}/>) : null}
+        {isNotEmpty(kits.data) ? kits.data.map(kit => <ItemSummary key={kit._id} {...kit}/>) : null}
       </div>
     </div>
   );

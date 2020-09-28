@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
 
-import { BestsellerSummary } from '../../features/BestsellerSummary/BestsellerSummary';
+import {ItemSummary} from '../../features/ItemSummary/ItemSummary';
 
 import { connect } from 'react-redux';
 import {getAll, fetchAll} from '../../../redux/productsRedux';
@@ -23,10 +23,10 @@ const Component = ({className, children, allProducts, fetchAllItems}) => {
   return(
     <div className={clsx(className, styles.root)}>
       <div className={styles.items}>
-        {isNotEmpty(kits.data) ? kits.data.map(kit => <BestsellerSummary key={kit._id} {...kit}/>) : null}
-        {isNotEmpty(books.data) ? books.data.map(book => <BestsellerSummary key={book._id} {...book}/>) : null}
-        {isNotEmpty(kids.data) ? kids.data.map(kid => <BestsellerSummary key={kid._id} {...kid}/>) : null}
-        {isNotEmpty(accessories.data) ? accessories.data.map(accessory => <BestsellerSummary key={accessory._id} {...accessory}/>) : null}
+        {isNotEmpty(kits.data) ? kits.data.map(kit => <ItemSummary key={kit._id} {...kit}/>) : null}
+        {isNotEmpty(books.data) ? books.data.map(book => <ItemSummary key={book._id} {...book}/>) : null}
+        {isNotEmpty(kids.data) ? kids.data.map(kid => <ItemSummary key={kid._id} {...kid}/>) : null}
+        {isNotEmpty(accessories.data) ? accessories.data.map(accessory => <ItemSummary key={accessory._id} {...accessory}/>) : null}
       </div>
     </div>
   );

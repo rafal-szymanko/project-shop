@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
 
-import { BestsellerSummary } from '../../features/BestsellerSummary/BestsellerSummary';
+import {ItemSummary} from '../../features/ItemSummary/ItemSummary';
 
 import { connect } from 'react-redux';
 import {fetchAccessories, getAllAccessories} from '../../../redux/productsRedux';
@@ -17,12 +17,10 @@ const Component = ({className, children, accessories, fetchAllAccessories}) => {
 
   useEffect(() => {fetchAllAccessories();}, [fetchAllAccessories]); 
 
-  console.log(accessories);
-
   return(
     <div className={clsx(className, styles.root)}>
       <div className={styles.items}>
-        {isNotEmpty(accessories.data) ? accessories.data.map(kit => <BestsellerSummary key={kit._id} {...kit}/>) : null}
+        {isNotEmpty(accessories.data) ? accessories.data.map(kit => <ItemSummary key={kit._id} {...kit}/>) : null}
       </div>
     </div>
   );

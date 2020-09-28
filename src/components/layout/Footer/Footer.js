@@ -30,6 +30,7 @@ const Component = ({className, children}) => {
       <div className={styles.sitemap}>
         <div className={styles.sitemapContainer}>
           <h2>Sitemap</h2>
+          <Link to='/all'>All Products</Link>
           <Link to='/kits'>Kits</Link>
           <Link to='/kids'>Kids</Link>
           <Link to='/books'>Books</Link>
@@ -69,19 +70,8 @@ Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
 };
-// const mapStateToProps = (state) => ({
-
-// });
-
-
-// const mapDispatchToProps = (dispatch, props) => ({
-//   addToNewsletter: (data) => dispatch(addPostRequest(data)),
-// });
-
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   Component as Footer,
-  // Container as Footer,
   Component as FooterComponent,
 };

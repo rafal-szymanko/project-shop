@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {Link} from 'react-router-dom';
 
-import styles from './BestsellerSummary.module.scss';
+import styles from './ItemSummary.module.scss';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
@@ -56,6 +56,7 @@ Component.propTypes = {
 };
 
 export {
-  Component as BestsellerSummary,
-  Component as BestsellerSummaryComponent,
+  Component as ItemSummary,
+  // Container as ItemSummary,
+  Component as ItemSummaryComponent,
 };
