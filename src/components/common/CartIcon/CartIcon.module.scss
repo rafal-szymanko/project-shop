@@ -1,0 +1,12 @@
+@import '../../../styles/settings.scss';
+
+.root {
+    .button {
+        color: $color-light;
+        background-color: $color-first;
+        &:hover {
+            color: $color-light;
+            background-color: $color-first;
+        }
+    }
+}

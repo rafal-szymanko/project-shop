@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { KitComponent } from './Kit';
+import { CartIconComponent } from './CartIcon';
 
-describe('Component Kit', () => {
+describe('Component CartIcon', () => {
   it('should render without crashing', () => {
-    const component = shallow(<KitComponent />);
+    const component = shallow(<CartIconComponent />);
     expect(component).toBeTruthy();
   });
 });

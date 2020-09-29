@@ -1,0 +1,37 @@
+@import '../../../styles/settings.scss';
+
+.root {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .card {
+        margin: 0 auto;
+        max-height: 100px;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .media {
+            height: 50px;
+            width: 50px;
+        }
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            width: 90%;
+            
+            .header {
+                margin: auto 0;
+                font-size: $base-size * 1.1;
+                width: 20%;
+            }
+        };
+    }
+    .amount {
+        text-align: right;
+        width: 90%;
+    }
+}
+

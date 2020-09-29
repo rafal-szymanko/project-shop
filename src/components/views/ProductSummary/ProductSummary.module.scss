@@ -1,5 +1,7 @@
 @import '../../../styles/settings.scss';
 
+@import '../../../styles/settings.scss';
+
 .root {
     .details {
         display: flex;
@@ -9,12 +11,20 @@
             object-fit: contain;
         }
         .description {
+            width: 40%;
             .form {
                 display: flex;
                 flex-direction: column;
-                div {
-                    padding-bottom: 10px;;
+                .formWrapper {
+                    div {
+                        width: 100%;
+                        margin-bottom: 20px;
                 }
+            }
+            .button {
+                color: $color-light;
+                background-color: $color-first;
+            }
             }
             .detailsList {
                 display: flex;

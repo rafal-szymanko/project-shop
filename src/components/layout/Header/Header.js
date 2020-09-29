@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import {NavLink, Link} from 'react-router-dom';
 
 import {Logo} from '../../common/Logo/Logo';
-import {Cart} from '../../features/Cart/Cart';
+import {CartIcon} from '../../common/CartIcon/CartIcon';
 
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
@@ -26,7 +26,7 @@ const Component = ({className, children}) => {
           </div>
         </NavLink>
         <div className={styles.buttonsContainer}>
-          <Cart/>
+          <CartIcon/>
         </div>
       </div>
       <div className={styles.bottomNavigation}>

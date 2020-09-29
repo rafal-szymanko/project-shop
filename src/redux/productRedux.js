@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 /* selectors */
-export const getKitById = ({product}) => product.data;
+export const getById = ({product}) => product.data;
+
 
 /* action name creator */
 const reducerName = 'product';
@@ -19,27 +20,12 @@ export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 
 /* thunk creators */
 
-export const fetchKit = (id) => {
+export const fetchItem = (id) => {
 
   return (dispatch, getState) => {    
     dispatch(fetchStarted());
     axios
-      .get(`http://localhost:8000/api/products/kits/${id}`)
-      .then(res => {
-        dispatch(fetchSuccess(res.data));
-      })
-      .catch(err => {
-        dispatch(fetchError(err.message || true));
-      });
-  };
-};
-
-export const fetchAccessory = (id) => {
-
-  return (dispatch, getState) => {    
-    dispatch(fetchStarted());
-    axios
-      .get(`http://localhost:8000/api/products/accessory/${id}`)
+      .get(`http://localhost:8000/api/products/${id}`)
       .then(res => {
         dispatch(fetchSuccess(res.data));
       })

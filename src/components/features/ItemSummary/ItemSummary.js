@@ -57,6 +57,5 @@ Component.propTypes = {
 
 export {
   Component as ItemSummary,
-  // Container as ItemSummary,
   Component as ItemSummaryComponent,
 };

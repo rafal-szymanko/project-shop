@@ -36,7 +36,10 @@ export const initialState = {
       error: false,
     },
   },
-  cart: [],
+  cart: {
+    products: [],
+    totalAmount: 0,
+  },
   banners: {
     data: {},
     loading: {
