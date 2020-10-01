@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 import { connect } from 'react-redux';
 import {getById, fetchItem} from '../../../redux/productRedux';
-import {addToCart, countTotalAmount, getTotalAmount} from '../../../redux/cartRedux';
+import {addToCart, getTotalAmount} from '../../../redux/cartRedux';
 
 import styles from './ProductSummary.module.scss';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -21,7 +21,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 
-const Component = ({className, children, product, fetchById, add, totalAmount, getAmount}) => {
+const Component = ({className, product, fetchById, add, getAmount}) => {
 
   const [fetchedItem, setFetchedItem] = useState({});
   const [cart, setCart] = useState({});
@@ -74,6 +74,7 @@ const Component = ({className, children, product, fetchById, add, totalAmount, g
                   <InputLabel htmlFor="age-native-simple">Size</InputLabel>
                   <Select
                     native
+                    required
                     onChange={handleOnChange}
                     inputProps={{
                       name: 'size',
@@ -88,6 +89,7 @@ const Component = ({className, children, product, fetchById, add, totalAmount, g
               <InputLabel htmlFor="age-native-simple">Quantity</InputLabel>
               <Select
                 native
+                required
                 onChange={handleOnChange}
                 inputProps={{
                   name: 'quantity',

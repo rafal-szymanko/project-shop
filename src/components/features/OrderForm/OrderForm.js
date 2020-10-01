@@ -6,16 +6,17 @@ import clsx from 'clsx';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
 import { connect } from 'react-redux';
-import { getCartItems } from '../../../redux/cartRedux.js';
+import { getCartItems, clearCart } from '../../../redux/cartRedux.js';
 import { addOrderRequest } from '../../../redux/ordersRedux.js';
 
 import styles from './OrderForm.module.scss';
-import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
 
-const Component = ({className, children, basket, sendOrder}) => {
+const Component = ({className, children, basket, sendOrder, clearBasket}) => {
 
   const {totalAmount, products} = basket;
+
+  console.log(basket);
 
   const prop = 'image';
 
@@ -43,6 +44,7 @@ const Component = ({className, children, basket, sendOrder}) => {
   const handleOnSubmit = (event) => {
     event.preventDefault();
     sendOrder(formContent);
+    clearBasket();
   };
 
   const handleOnChange = (event) => {
@@ -77,6 +79,7 @@ Component.propTypes = {
   className: PropTypes.string,
   basket: PropTypes.object,
   sendOrder: PropTypes.func,
+  clearBasket: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
@@ -85,6 +88,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   sendOrder: (data) => dispatch(addOrderRequest(data)),
+  clearBasket: () => dispatch(clearCart()),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

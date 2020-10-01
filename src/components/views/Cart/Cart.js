@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
 
-import {Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { getCartItems, removeFromCart, updateCart } from '../../../redux/cartRedux.js';
@@ -25,6 +25,7 @@ const Component = ({className, basket, remove, update}) => {
   const [amount, setAmount] = useState(totalAmount);
   const [productId, setProductId] = useState('');
   const [comment, setComment] = useState('');
+  const [fireRedirect, setFireRedirect] = useState(false);
 
   const handleOnChange = (event, id) => {
     const {value } = event.target;
@@ -34,7 +35,10 @@ const Component = ({className, basket, remove, update}) => {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    update({id: productId, text: comment});
+    if(comment) {
+      update({id: productId, text: comment});
+    }
+    setFireRedirect(true);
   };
 
   const handleOnClick = (id, price, quantity) => {
@@ -87,6 +91,10 @@ const Component = ({className, basket, remove, update}) => {
             </IconButton>
             <form  noValidate autoComplete="off" className={styles.form} id='form' onSubmit={handleOnSubmit}>
               <TextField id="standard-basic" label="Comments" name='comments' onChange={event => handleOnChange(event, product.productId)}/>
+              {fireRedirect ?
+                <Redirect to={'/cart/order'}/>
+                : null
+              }
             </form>
           </CardContent>
         </Card>
@@ -95,9 +103,7 @@ const Component = ({className, basket, remove, update}) => {
       }
       {products.length > 0 ? 
         <div className={styles.wrapper}>
-          <Link to='/cart/order'>
-            <Button form='form' className={styles.button} variant="contained" type="submit">proceed</Button>
-          </Link>
+          <Button form='form' className={styles.button} variant="contained" type="submit">proceed</Button>
         </div>
         : null
       }

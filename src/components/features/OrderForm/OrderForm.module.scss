@@ -7,6 +7,9 @@
         flex-direction: column;
         height: 60vh;
         justify-content: space-between;
+        div {
+            width: 100%;
+        }
         .button {
             color: $color-light;
             background-color: $color-first;
