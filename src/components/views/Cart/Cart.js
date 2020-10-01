@@ -19,7 +19,7 @@ import { Button } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 
 
-const Component = ({className, children, basket, remove, update}) => {
+const Component = ({className, basket, remove, update}) => {
 
   const {totalAmount, products} = basket;
   const [amount, setAmount] = useState(totalAmount);
