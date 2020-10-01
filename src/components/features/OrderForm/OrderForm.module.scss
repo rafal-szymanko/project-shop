@@ -1,0 +1,15 @@
+@import '../../../styles/settings.scss';
+
+.root {
+    width: 45%;
+    .form {
+        display: flex;
+        flex-direction: column;
+        height: 50vh;
+        justify-content: space-between;
+        .button {
+            color: $color-light;
+            background-color: $color-first;
+        }
+    }
+}

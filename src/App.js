@@ -14,6 +14,7 @@ import { NotFound } from './components/views/NotFound/NotFound';
 import { All } from './components/views/All/All';
 import {ProductSummary} from './components/views/ProductSummary/ProductSummary';
 import {Cart} from './components/views/Cart/Cart';
+import {Order} from './components/views/Order/Order';
 
 import './styles/global.scss';
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route exact path='/books/:id' component={ProductSummary}/>
           <Route exact path='/books/:id' component={ProductSummary}/>
           <Route exact path='/cart' component={Cart}/>
+          <Route exact path='/cart/order' component={Order}/>
           <Route path='*' component={NotFound} />
         </Switch>
       </MainLayout>

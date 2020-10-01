@@ -50,8 +50,7 @@ const Component = ({className, children, product, fetchById, add, totalAmount, g
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    add(cart);
-    totalAmount(amount);
+    add({cart: cart, amount: amount});
   };
 
 
@@ -137,7 +136,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, props) => ({
   fetchById: () => dispatch(fetchItem(props.match.params.id)),
   add: (data) => dispatch(addToCart(data)),
-  totalAmount: (amount) => dispatch(countTotalAmount(amount)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

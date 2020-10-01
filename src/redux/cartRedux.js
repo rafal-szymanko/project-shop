@@ -10,13 +10,13 @@ const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
 const ADD_TO_CART = createActionName('ADD_TO_CART');
-const COUNT_TOTAL_AMOUNT = createActionName('COUNT_TOTAL_AMOUNT');
 const REMOVE_FROM_CART  = createActionName('REMOVE_FROM_CART');
+const UPDATE_CART  = createActionName('UPDATE_CART');
 
 /* action creators */
 export const addToCart = payload => ({ payload, type: ADD_TO_CART });
-export const countTotalAmount = payload => ({ payload, type: COUNT_TOTAL_AMOUNT });
 export const removeFromCart = payload => ({ payload, type: REMOVE_FROM_CART });
+export const updateCart = payload => ({ payload, type: UPDATE_CART });
 
 
 /* reducer */
@@ -24,25 +24,24 @@ export const reducer = (statePart = [], action = {}) => {
     
   switch (action.type) {
     case ADD_TO_CART: {
-      console.log(statePart.products);
       return  {
-        ...statePart,
-        products: [...statePart.products, action.payload],
+        totalAmount: action.payload.amount,
+        products: [...statePart.products, action.payload.cart],
       };
     }
-    case COUNT_TOTAL_AMOUNT: {
-      console.log(action.payload);
-      return  {
-        totalAmount: action.payload,
-        products: [
-          ...statePart.products,
-        ],
+    case UPDATE_CART: {
+      const filtered = statePart.products.filter(obj => obj.productId === action.payload.id);
+      Object.assign(filtered[0], {comment: action.payload.text});
+
+      return {
+        ...statePart,
+        products: [...statePart.products],
       };
     }
     case REMOVE_FROM_CART: {
       return {
-        ...statePart,
-        products: statePart.products.filter(obj => obj.productId !== action.payload),
+        totalAmount: action.payload.amount,
+        products: statePart.products.filter(obj => obj.productId !== action.payload.id),
       };
     }
     default:

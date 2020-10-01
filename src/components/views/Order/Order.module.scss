@@ -1,0 +1,13 @@
+@import '../../../styles/settings.scss';
+
+.root {
+    display: flex;
+    justify-content: space-around;
+    .summary {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+    }
+}

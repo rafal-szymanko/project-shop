@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
 
+import {Link} from 'react-router-dom';
+
 import { connect } from 'react-redux';
-import { getCartItems, removeFromCart, countTotalAmount } from '../../../redux/cartRedux.js';
+import { getCartItems, removeFromCart, updateCart } from '../../../redux/cartRedux.js';
 
 import styles from './Cart.module.scss';
 import Card from '@material-ui/core/Card';
@@ -13,19 +15,32 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { Button } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 
-const Component = ({className, children, cart, remove, countAmount}) => {
 
-  const {totalAmount, products} = cart;
+const Component = ({className, children, basket, remove, update}) => {
+
+  const {totalAmount, products} = basket;
   const [amount, setAmount] = useState(totalAmount);
+  const [productId, setProductId] = useState('');
+  const [comment, setComment] = useState('');
 
+  const handleOnChange = (event, id) => {
+    const {value } = event.target;
+    setProductId(id);
+    setComment(value);
+  };
 
-  const handleClick = (id, price, quantity) => {
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+    update({id: productId, text: comment});
+  };
 
+  const handleOnClick = (id, price, quantity) => {
     const count = totalAmount - price * Number(quantity);
     setAmount(count);
-    remove(id);
-    countAmount(count);
+    remove({id: id, amount: count});
   };
 
   return (
@@ -66,19 +81,26 @@ const Component = ({className, children, cart, remove, countAmount}) => {
               {product.price.toFixed(2)} €
             </Typography>
             <IconButton aria-label="delete" color="secondary" onClick={() => {
-              handleClick(product.productId, product.price, product.quantity);
+              handleOnClick(product.productId, product.price, product.quantity);
             }}>
               <DeleteIcon />
             </IconButton>
+            <form  noValidate autoComplete="off" className={styles.form} id='form' onSubmit={handleOnSubmit}>
+              <TextField id="standard-basic" label="Comments" name='comments' onChange={event => handleOnChange(event, product.productId)}/>
+            </form>
           </CardContent>
-
         </Card>
       )
-        : <h2>Your shopping basket is empty</h2>
+        : <h2 className={styles.emptyBasket}>Your shopping basket is empty</h2>
       }
-      <div>
-        {products.length > 0 ? <h2 className={styles.amount}>Total Amount {amount.toFixed(2)} €</h2> : null}
-      </div>
+      {products.length > 0 ? 
+        <div className={styles.wrapper}>
+          <Link to='/cart/order'>
+            <Button form='form' className={styles.button} variant="contained" type="submit">proceed</Button>
+          </Link>
+        </div>
+        : null
+      }
     </div>
   );
 };
@@ -86,25 +108,23 @@ const Component = ({className, children, cart, remove, countAmount}) => {
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  cart: PropTypes.array,
+  basket: PropTypes.array,
   remove: PropTypes.func,
-  countAmount: PropTypes.func,
+  update: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
-  cart: getCartItems(state),
+  basket: getCartItems(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  remove: id => dispatch(removeFromCart(id)),
-  countAmount: (amount) => dispatch(countTotalAmount(amount)),
+  remove: (id) => dispatch(removeFromCart(id)),
+  update: (data) => dispatch(updateCart(data)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-// const Container = connect(mapStateToProps)(Component);
 
 export {
-  // Component as Cart,
   Container as Cart,
   Component as CartComponent,
 };

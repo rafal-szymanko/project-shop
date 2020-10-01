@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const bannersRoutes = require('./routes/banners.routes');
 const newsletterRoutes = require('./routes/newsletter.routes');
 const productsRoutes = require('./routes/products.routes');
+const ordersRoutes = require('./routes/orders.routes');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api', productsRoutes);
 app.use('/api', bannersRoutes);
 app.use('/api', newsletterRoutes);
+app.use('/api', ordersRoutes);
 
 /* API ERROR PAGES */
 app.use('/api', (req, res) => {
