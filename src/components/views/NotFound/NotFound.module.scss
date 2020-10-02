@@ -4,5 +4,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    .button {
+        color: $color-light;
+        background-color: $color-first;
+        &:hover {
+            color: $color-light;
+            background-color: $color-first;
+        }
+    }
 }

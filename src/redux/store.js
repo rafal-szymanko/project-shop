@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { initialState } from './initialState';
+import { persistedState } from './persistedState';
 import { reducer as bannersReducer } from './bannersRedux';
 import { reducer as productsReducer } from './productsRedux';
 import { reducer as productReducer } from './productRedux';
@@ -32,7 +33,7 @@ const combinedReducers = combineReducers(reducers);
 // create store
 export const store = createStore(
   combinedReducers,
-  initialState,
+  persistedState,
   composeWithDevTools(
     applyMiddleware(thunk)
   )

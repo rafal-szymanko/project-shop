@@ -16,8 +16,8 @@ const Component = ({className}) => (
     <p>Sorry, but the page you are looking for is not found. Why not check out other links?</p>
     <NavLink to='/'>
       <Button
+        className={styles.button}
         variant="contained"
-        color="primary"
         startIcon={<HomeIcon />}
       >
         Go to Home
@@ -32,6 +32,5 @@ Component.propTypes = {
 
 export {
   Component as NotFound,
-  // Container as NotFound,
   Component as NotFoundComponent,
 };

@@ -1,19 +1,21 @@
 @import '../../../styles/settings.scss';
 
 .root {
-    display: flex;
-    justify-content: space-around;
-    .summary {
+    .wrapper {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 30%;
-    }
-    .success {
-        color: green,
-    };
-    .failed {
-        color: red,
+        justify-content: space-around;
+        .summary {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+        }
+        .success {
+            color: green,
+        };
+        .failed {
+            color: red,
+        }
     }
 }

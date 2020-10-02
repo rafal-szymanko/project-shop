@@ -50,11 +50,12 @@ const Component = ({className, basket, request}) => {
   };
 
 
-
   return (
     <div className={clsx(className, styles.root)}>
-      <OrderForm />
-      {renderMessage()}
+      <div className={styles.wrapper}>
+        <OrderForm /> 
+        {renderMessage()}
+      </div>
     </div>
   );
 };

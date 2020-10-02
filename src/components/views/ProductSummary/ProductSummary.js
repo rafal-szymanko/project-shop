@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 import { connect } from 'react-redux';
 import {getById, fetchItem} from '../../../redux/productRedux';
-import {addToCart, getTotalAmount} from '../../../redux/cartRedux';
+import {addToCart, getTotalAmount, addItemRequest} from '../../../redux/cartRedux';
 
 import styles from './ProductSummary.module.scss';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -28,8 +28,8 @@ const Component = ({className, product, fetchById, add, getAmount}) => {
   const [amount, setAmount] = useState(getAmount);
 
   useEffect(() => {fetchById();}, [fetchById]);
-  useEffect(() => {fetchById();}, [fetchById]);
   useEffect(() => {if(isNotEmpty(product)) {setFetchedItem(...product);}}, [product]);
+
 
   const quantity = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -52,7 +52,6 @@ const Component = ({className, product, fetchById, add, getAmount}) => {
     event.preventDefault();
     add({cart: cart, amount: amount});
   };
-
 
   return (
     <div className={clsx(className, styles.root)}>
@@ -137,7 +136,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
   fetchById: () => dispatch(fetchItem(props.match.params.id)),
-  add: (data) => dispatch(addToCart(data)),
+  add: (data) => dispatch(addItemRequest(data)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

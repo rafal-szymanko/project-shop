@@ -37,7 +37,7 @@ export const addOrderRequest = (order) => {
       let res = await axios.post(`http://localhost:8000/api/orders`, order);
       dispatch(addOrder(res));
       dispatch(endRequest({ name: 'ADD_ORDER' }));
-  
+      localStorage.clear();
     } catch(e) {
       dispatch(errorRequest({ name: 'ADD_ORDER', error: e.message }));
     }

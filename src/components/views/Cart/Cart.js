@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import {Redirect} from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { getCartItems, removeFromCart, updateCart } from '../../../redux/cartRedux.js';
+import { getCartItems, removeItemRequest, updateCart } from '../../../redux/cartRedux.js';
 
 import styles from './Cart.module.scss';
 import Card from '@material-ui/core/Card';
@@ -22,7 +22,6 @@ import TextField from '@material-ui/core/TextField';
 const Component = ({className, basket, remove, update}) => {
 
   const {totalAmount, products} = basket;
-  const [amount, setAmount] = useState(totalAmount);
   const [productId, setProductId] = useState('');
   const [comment, setComment] = useState('');
   const [fireRedirect, setFireRedirect] = useState(false);
@@ -43,7 +42,12 @@ const Component = ({className, basket, remove, update}) => {
 
   const handleOnClick = (id, price, quantity) => {
     const count = totalAmount - price * Number(quantity);
-    setAmount(count);
+    console.log(totalAmount);
+    console.log(price);
+    console.log(quantity);
+    console.log(count);
+
+
     remove({id: id, amount: count});
   };
 
@@ -124,7 +128,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  remove: (id) => dispatch(removeFromCart(id)),
+  remove: (id) => dispatch(removeItemRequest(id)),
   update: (data) => dispatch(updateCart(data)),
 });
 
