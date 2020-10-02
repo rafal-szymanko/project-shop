@@ -15,9 +15,6 @@ import { Button } from '@material-ui/core';
 const Component = ({className, children, basket, sendOrder, clearBasket}) => {
 
   const {totalAmount, products} = basket;
-
-  console.log(basket);
-
   const prop = 'image';
 
   const newProduct = products.map(product => Object.keys(product).reduce((obj, key) => {
@@ -43,8 +40,30 @@ const Component = ({className, children, basket, sendOrder, clearBasket}) => {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    sendOrder(formContent);
-    clearBasket();
+    if(products.length > 0 
+      && totalAmount > 0 
+      && formContent.shippingDetails.name.length > 0 
+      && formContent.shippingDetails.address.length > 0 
+      && formContent.shippingDetails.code.length > 0 
+      && formContent.shippingDetails.city.length > 0 
+      && formContent.shippingDetails.mail.length > 0
+      && formContent.shippingDetails.phone.length > 0
+    ) {
+      sendOrder(formContent);
+      clearBasket();
+      setFormContent({
+        shippingDetails : {
+          name: '',
+          address: '',
+          code: '',
+          city: '',
+          mail: '',
+          phone: '',
+        },
+        products: newProduct,
+        totalAmount: totalAmount,
+      });
+    }
   };
 
   const handleOnChange = (event) => {

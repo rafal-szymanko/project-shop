@@ -37,14 +37,8 @@ export const initialState = {
     },
   },
   cart: {
-    products: [{
-      image: 'manchester-united-heritage-football-size-5.jpg',
-      name: 'Manchester United Heritage Football - Size 5',
-      price: 39,
-      productId: '5f70976bea54e60e487b199d',
-      quantity: '2',
-    }],
-    totalAmount: 78,
+    products: [],
+    totalAmount: 0,
   },
   banners: {
     data: {},
@@ -52,5 +46,13 @@ export const initialState = {
       active: false,
       error: false,
     },
+  },
+  order: {
+    data: [],
+    requests: [],
+  },
+  newsletter: {
+    data: [],
+    requests: [],
   },
 };
