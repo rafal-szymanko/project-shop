@@ -44,3 +44,42 @@
         width: 30%;
     }
 }
+
+@media (max-width: 575.98px) {
+    .root {
+
+        flex-direction: column;
+        .address {
+            p {
+                text-align: center;
+            }
+        }
+        .sitemap {
+            border-left: none;
+            .sitemapContainer {
+
+                padding-left: 0;
+                a {
+                    padding-bottom: 10px;
+                    text-align: center;
+                }
+            }
+    
+        }
+        .socialMedia {
+            .icons {
+                padding: 10px 0;
+            }
+            p {
+                display: none;
+            }
+        }
+        .logoContainer, .sitemap, .newsletter {
+            width: 100%;
+        }
+        h2 {
+            font-size: $base-size * 1.5;
+        }
+    }
+ }
+

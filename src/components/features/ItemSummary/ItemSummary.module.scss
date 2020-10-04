@@ -34,3 +34,25 @@
         };
     }
 }
+
+
+@media (max-width: 575.98px) {
+    .root {
+        width: 100%;
+        .card {
+            .media {
+                height: 50px;
+            }
+            .content {
+                min-height: 150px;
+                .header {
+                    min-height: 50px;
+                    font-size: $base-size * 1.2;
+                }
+                .subheader {
+                    line-height: 1,
+                }
+            };
+        }
+    }
+ }

@@ -49,3 +49,21 @@
     }
 }
 
+
+
+@media (max-width: 575.98px) {
+   .root {
+        .card {
+            margin-bottom: 10px;
+            .content {
+                width: 100%;
+                .header {
+                margin-bottom: 5px;
+                font-size: $base-size;
+                width: 100%;
+                }
+            };
+        }
+    }
+
+}

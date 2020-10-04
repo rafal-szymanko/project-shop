@@ -19,3 +19,20 @@
         }
     }
 }
+
+@media (max-width: 575.98px) {
+    .root {
+        .wrapper {
+            flex-direction: column-reverse;
+            .summary {
+                width: 100%;
+            }
+            .success {
+                color: green,
+            };
+            .failed {
+                color: red,
+            }
+        }
+    }
+ }

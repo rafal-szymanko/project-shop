@@ -42,12 +42,6 @@ const Component = ({className, basket, remove, update}) => {
 
   const handleOnClick = (id, price, quantity) => {
     const count = totalAmount - price * Number(quantity);
-    console.log(totalAmount);
-    console.log(price);
-    console.log(quantity);
-    console.log(count);
-
-
     remove({id: id, amount: count});
   };
 

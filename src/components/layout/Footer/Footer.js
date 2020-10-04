@@ -14,10 +14,10 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
-const Component = ({className, children}) => {
+const Component = ({className}) => {
   return(
     <div className={clsx(className, styles.root)}>
-      <div>
+      <div className={styles.address}>
         <div className={styles.logo}>
           <h2>MU Store Ltd</h2>
         </div>

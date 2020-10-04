@@ -1,4 +1,16 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+    svg {
+            width: 75px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .root {
+        svg {
+            width: 40px;
+        }
+    }
+ }
+

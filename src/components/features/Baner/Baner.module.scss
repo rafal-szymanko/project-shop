@@ -6,7 +6,15 @@
         .image {
             width: 100%;
             height: 100%;
+            object-fit: contain;
         }
     }
 }
 
+@media (max-width: 575.98px) {
+    .root {
+        div:first-child {
+            display: none;
+        }
+    }
+ }

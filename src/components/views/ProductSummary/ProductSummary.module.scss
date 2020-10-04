@@ -22,6 +22,7 @@
                 }
             }
             .button {
+                margin-top: 20px;
                 color: $color-light;
                 background-color: $color-first;
             }
@@ -42,4 +43,22 @@
         }
     }
 
+}
+
+@media (max-width: 575.98px) {
+    .root {
+        .details {
+            flex-direction: column;
+            .media {
+                height: 250px;
+                width: 100%;
+            }
+            .description {
+                width: 100%;
+                h2 {
+                    font-size: $base-size * 1.2;
+                }
+            }
+        }
+    }
 }

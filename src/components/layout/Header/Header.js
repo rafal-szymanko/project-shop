@@ -1,4 +1,5 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
@@ -11,10 +12,9 @@ import {CartIcon} from '../../common/CartIcon/CartIcon';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
 import styles from './Header.module.scss';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const Component = ({className, children}) => {
-
-
 
   return (
     <div className={clsx(className, styles.root)}>
@@ -28,7 +28,9 @@ const Component = ({className, children}) => {
         <div className={styles.buttonsContainer}>
           <CartIcon/>
         </div>
+        <MenuIcon className={styles.menuIcon}></MenuIcon>
       </div>
+      
       <div className={styles.bottomNavigation}>
         <Link to='/all'>ALL PRODUCTS</Link>
         <Link to='/kits'>KITS</Link>

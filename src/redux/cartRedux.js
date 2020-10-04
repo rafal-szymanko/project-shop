@@ -65,7 +65,6 @@ export const removeItemRequest = (data) => {
     dispatch(startRequest({ name: 'REMOVE_FROM_CART' }));
     const cartProducts = JSON.parse(localStorage.getItem('cart'));
     const filtered = cartProducts.products.filter(obj => obj.productId !== data.id);
-    console.log(data.amount);
     try {
       let cart = {};
 

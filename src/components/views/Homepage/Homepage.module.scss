@@ -39,3 +39,31 @@
         }
     }
 }
+
+@media (max-width: 575.98px) {
+    .container {
+        margin-top: 0;
+        .title {
+            font-size: $base-size * 1.5;
+            padding-bottom: 0;
+            text-align: center;
+        }
+        .items {
+            flex-direction: column;
+            .item {
+                width: 100%;
+                height: 100px;
+                margin-top: 10px;
+                p {
+                    font-size: $base-size *1.2;
+                }
+            }
+            .icon {
+                height: $base-size * 2;
+                width: $base-size * 2;
+            }
+        }
+    }
+ }
+
+

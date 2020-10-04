@@ -22,6 +22,9 @@
             display: flex;
             align-items: center;
         }
+        .menuIcon {
+            display: none;
+        }
     }
     .bottomNavigation {
         display: flex;
@@ -31,3 +34,26 @@
         font-size: $base-size * 1.2;
     }
 }
+
+@media (max-width: 575.98px) {
+    .root {
+        margin: 10px 0;
+        .upperNavigation {
+            align-items: center;
+            .logoContainer {
+                h2 {
+                    padding-left: 20px;
+                    font-size: $base-size * 1.5;
+                };
+            }
+            .menuIcon {
+                display: block;
+            }
+        }
+        .bottomNavigation {
+            display: none;
+
+        }
+    }
+ }
+
