@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {useWindowDimensions} from '../../../hooks/useWindowDimensions';
 import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
@@ -15,6 +15,10 @@ import styles from './Header.module.scss';
 import MenuIcon from '@material-ui/icons/Menu';
 
 const Component = ({className, children}) => {
+
+  const { height, width } = useWindowDimensions();
+
+  console.log(width);
 
   return (
     <div className={clsx(className, styles.root)}>

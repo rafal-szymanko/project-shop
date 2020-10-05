@@ -2,11 +2,27 @@
 
 .root {
     .paper {
-        height: 50vh;
+        height: 350px;
         .image {
             width: 100%;
             height: 100%;
             object-fit: contain;
+        }
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .root {
+        .paper {
+            height: 300px;
+        }
+    }
+}
+
+@media (max-width: 991.98px) { 
+    .root {
+        .paper {
+            height: 200px;
         }
     }
 }

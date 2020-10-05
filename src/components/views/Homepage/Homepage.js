@@ -44,7 +44,7 @@ const Component = ({className, children, bestsellers, fetchBestsellersItems}) =>
         <div>
           <h2 className={styles.title}>Discover Manchester United Store</h2>
         </div>
-        <div className={styles.items}>
+        <div className={clsx(styles.items, styles.options)}>
           <div className={styles.item}>
             <LocalShippingIcon className={styles.icon}/>
             <p>Free Shipping</p>

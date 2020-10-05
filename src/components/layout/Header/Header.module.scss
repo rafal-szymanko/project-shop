@@ -1,5 +1,6 @@
 @import '../../../styles/settings.scss';
 
+
 .root {
     display: flex;
     flex-direction: column;
@@ -34,26 +35,38 @@
         font-size: $base-size * 1.2;
     }
 }
-
-@media (max-width: 575.98px) {
+ 
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
     .root {
-        margin: 10px 0;
         .upperNavigation {
-            align-items: center;
             .logoContainer {
                 h2 {
-                    padding-left: 20px;
-                    font-size: $base-size * 1.5;
+                    font-size: $base-size * 2;
                 };
             }
-            .menuIcon {
-                display: block;
+            .buttonsContainer {
+                display: flex;
+                align-items: center;
             }
         }
         .bottomNavigation {
-            display: none;
-
+            font-size: $base-size * 1;
         }
     }
  }
 
+
+ // Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+    .root {
+        .upperNavigation {
+            .logoContainer {
+                h2 {
+                    font-size: $base-size * 1.5;
+                };
+            }
+
+}
+    }
+}

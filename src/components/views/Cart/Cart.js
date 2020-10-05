@@ -82,18 +82,20 @@ const Component = ({className, basket, remove, update}) => {
             >
               {product.price.toFixed(2)} €
             </Typography>
-            <IconButton aria-label="delete" color="secondary" onClick={() => {
-              handleOnClick(product.productId, product.price, product.quantity);
-            }}>
-              <DeleteIcon />
-            </IconButton>
-            <form  noValidate autoComplete="off" className={styles.form} id='form' onSubmit={handleOnSubmit}>
-              <TextField id="standard-basic" label="Comments" name='comments' onChange={event => handleOnChange(event, product.productId)}/>
-              {fireRedirect ?
-                <Redirect to={'/cart/order'}/>
-                : null
-              }
-            </form>
+            <div className={styles.commentDelete}>
+              <IconButton aria-label="delete" color="secondary" onClick={() => {
+                handleOnClick(product.productId, product.price, product.quantity);
+              }}>
+                <DeleteIcon />
+              </IconButton>
+              <form  noValidate autoComplete="off" className={styles.form} id='form' onSubmit={handleOnSubmit}>
+                <TextField id="standard-basic" label="Comments" name='comments' onChange={event => handleOnChange(event, product.productId)}/>
+                {fireRedirect ?
+                  <Redirect to={'/cart/order'}/>
+                  : null
+                }
+              </form>
+            </div>
           </CardContent>
         </Card>
       )
