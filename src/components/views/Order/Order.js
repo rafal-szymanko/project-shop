@@ -64,7 +64,7 @@ const Component = ({className, basket, request}) => {
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  basket: PropTypes.object,
+  basket: PropTypes.array,
   sendOrder: PropTypes.func,
   request: PropTypes.object,
 };

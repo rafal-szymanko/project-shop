@@ -7,7 +7,8 @@ import {ItemSummary} from '../../features/ItemSummary/ItemSummary';
 import {Baner} from '../../features/Baner/Baner';
 
 import { connect } from 'react-redux';
-import {getAllBestsellers, fetchBestsellers} from '../../../redux/productsRedux';
+import {fetchBestsellers, getAllBestsellers} from '../../../redux/bestsellersRedux';
+import {fetchAll} from '../../../redux/productsRedux';
 
 import styles from './Homepage.module.scss';
 
@@ -17,15 +18,15 @@ import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn';
 
 import {isNotEmpty} from '../../../utils/checkIfObjNotEmpty';
 
-const Component = ({className, children, bestsellers, fetchBestsellersItems}) => {
+const Component = ({className, bestsellers, fetchBestsellersItems, fetchAllItems}) => {
 
   useEffect(() => {fetchBestsellersItems();}, [fetchBestsellersItems]);
+  useEffect(() => {fetchAllItems();}, [fetchAllItems]);
 
   const {kids, kits, accessories, books} = bestsellers;
     
   return(
     <div className={clsx(className, styles.root)}>
-      {children}
       <Baner/>
       <div className={styles.container}>
         <div>
@@ -66,6 +67,7 @@ Component.propTypes = {
   className: PropTypes.string,
   bestsellers: PropTypes.object,
   fetchBestsellersItems: PropTypes.func,
+  fetchAllItems: PropTypes.func,
 
 };
 
@@ -75,6 +77,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchBestsellersItems: () => dispatch(fetchBestsellers()),
+  fetchAllItems: () => dispatch(fetchAll()),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

@@ -1,4 +1,6 @@
 import axios from 'axios';
+import {isEmpty} from '../utils/checkIfObjIsEmpty';
+
 
 /* selectors */
 export const getAllBanners = ({banners}) => banners.data;
@@ -8,29 +10,34 @@ const reducerName = 'banners';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
-const FETCH_START = createActionName('FETCH_START');
-const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
-const FETCH_ERROR = createActionName('FETCH_ERROR');
+const FETCH_BANNERS_START = createActionName('FETCH_BANNERS_START');
+const FETCH_BANNERS_SUCCESS = createActionName('FETCH_BANNERS_SUCCESS');
+const FETCH_BANNERS_ERROR = createActionName('FETCH_BANNERS_ERROR');
 
 /* action creators */
-export const fetchStarted = payload => ({ payload, type: FETCH_START });
-export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
-export const fetchError = payload => ({ payload, type: FETCH_ERROR });
+export const fetchBannersStarted = payload => ({ payload, type: FETCH_BANNERS_START });
+export const fetchBannersSuccess = payload => ({ payload, type: FETCH_BANNERS_SUCCESS });
+export const fetchBannersError = payload => ({ payload, type: FETCH_BANNERS_ERROR });
 
 /* thunk creators */
 
 export const fetchAllBanners = () => {
 
-  return (dispatch, getState) => {    
-    dispatch(fetchStarted());
-    axios
-      .get('http://localhost:8000/api/banners')
-      .then(res => {
-        dispatch(fetchSuccess(res.data));
-      })
-      .catch(err => {
-        dispatch(fetchError(err.message || true));
-      });
+  return (dispatch, getState) => {
+
+    const state = getState();
+
+    if(isEmpty(state.banners.data)) {
+      dispatch(fetchBannersStarted());
+      axios
+        .get('http://localhost:8000/api/banners')
+        .then(res => {
+          dispatch(fetchBannersSuccess(res.data));
+        })
+        .catch(err => {
+          dispatch(fetchBannersError(err.message || true));
+        });
+    }
   };
 };
 
@@ -38,7 +45,7 @@ export const fetchAllBanners = () => {
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {
   switch (action.type) {
-    case FETCH_START: {
+    case FETCH_BANNERS_START: {
       return {
         ...statePart,
         loading: {
@@ -47,7 +54,7 @@ export const reducer = (statePart = [], action = {}) => {
         },
       };
     }
-    case FETCH_SUCCESS: {
+    case FETCH_BANNERS_SUCCESS: {
       return {
         ...statePart,
         loading: {
@@ -57,7 +64,7 @@ export const reducer = (statePart = [], action = {}) => {
         data: action.payload,
       };
     }
-    case FETCH_ERROR: {
+    case FETCH_BANNERS_ERROR: {
       return {
         ...statePart,
         loading: {

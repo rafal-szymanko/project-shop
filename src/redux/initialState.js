@@ -1,4 +1,35 @@
 export const initialState = {
+  bestsellers: {
+    kits: {
+      data: {},
+      loading: {
+        active: false,
+        error: false,
+      },
+    },
+    kids: {
+      data: {},
+      loading: {
+        active: false,
+        error: false,
+      },
+    },
+    books: {
+      data: {},
+      loading: {
+        active: false,
+        error: false,
+      },
+    },
+    accessories: {
+      data: {},
+      loading: {
+        active: false,
+        error: false,
+      },
+    },
+  },
+  
   products: {
     kits: {
       data: {},

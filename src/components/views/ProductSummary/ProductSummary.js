@@ -26,7 +26,7 @@ const Component = ({className, product, fetchById, add, getAmount, basket}) => {
   const [fetchedItem, setFetchedItem] = useState({});
   const [cart, setCart] = useState({});
   const [amount, setAmount] = useState(getAmount);
-  const [showModal, setShowModal] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {fetchById();}, [fetchById]);
   useEffect(() => {if(isNotEmpty(product)) {setFetchedItem(...product);}}, [product]);
@@ -53,8 +53,9 @@ const Component = ({className, product, fetchById, add, getAmount, basket}) => {
     event.preventDefault();
     const checkIfExistInCart = basket.products.filter(item=> item.productId === cart.productId);
     if(checkIfExistInCart.length > 0) {
-      setShowModal(true);
+      setShowMessage({show: true, status: 'failed'});
     } else {
+      setShowMessage({show: true, status: 'success'});
       add({cart: cart, amount: amount});
     }
   };
@@ -73,7 +74,8 @@ const Component = ({className, product, fetchById, add, getAmount, basket}) => {
           <div className={styles.description}>
             <h2>{fetchedItem.name}</h2>
             <h2> Your price: {fetchedItem.price.toFixed(2)} €</h2>
-            {showModal ? <p className={styles.modal}>Item is already in your cart.</p> : null}
+            {showMessage.show && showMessage.status === 'failed' ? <p className={styles.messageFailure}>Item is already in your cart.</p> : null}
+            {showMessage.show && showMessage.status === 'success' ? <p className={styles.messageSuccess}>Your product has been added to your cart.</p> : null}
             <form className={styles.form} onSubmit={handleOnSubmit}>
               {fetchedItem.size.length > 0 ?
                 <div className={styles.formWrapper}>
@@ -133,7 +135,7 @@ Component.propTypes = {
   add: PropTypes.func,
   totalAmount: PropTypes.func,
   getAmount: PropTypes.number,
-  basket: PropTypes.object,
+  basket: PropTypes.array,
 };
 
 const mapStateToProps = state => ({

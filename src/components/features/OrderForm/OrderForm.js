@@ -96,7 +96,7 @@ const Component = ({className, children, basket, sendOrder, clearBasket}) => {
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  basket: PropTypes.object,
+  basket: PropTypes.array,
   sendOrder: PropTypes.func,
   clearBasket: PropTypes.func,
 };

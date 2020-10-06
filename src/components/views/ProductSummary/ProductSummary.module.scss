@@ -40,8 +40,11 @@
                     border-bottom: 1px solid $color-second;
                 }
             }
-            .modal {
+            .messageFailure {
                 color: $color-failure;
+            }
+            .messageSuccess {
+                color: $color-success;
             }
         }
     }
