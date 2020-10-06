@@ -7,3 +7,19 @@
         flex-wrap: wrap;
     }
 }
+
+@media (max-width: 767.98px) {
+    .items {
+        flex-wrap: wrap;
+        &:after {
+            content: "";
+            width: 30%;
+        }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .root {
+        margin-top: 60px;
+     }
+ }
