@@ -22,9 +22,7 @@ const Component = ({className, children, bestsellers, fetchBestsellersItems}) =>
   useEffect(() => {fetchBestsellersItems();}, [fetchBestsellersItems]);
 
   const {kids, kits, accessories, books} = bestsellers;
-
-  console.log(bestsellers);
-  
+    
   return(
     <div className={clsx(className, styles.root)}>
       {children}

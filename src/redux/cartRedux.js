@@ -1,3 +1,4 @@
+import axios from 'axios';
 
 /* selectors */
 export const getCartItems = ({cart}) => cart;
@@ -31,9 +32,9 @@ export const errorRequest = payload => ({ payload, type: ERROR_REQUEST });
 /* thunk creators */
 
 export const addItemRequest = (data) => {
-
   return async dispatch => {
     dispatch(startRequest({ name: 'ADD_TO_CART' }));
+
     const cartProducts = JSON.parse(localStorage.getItem('cart'));
     try {
       let cart = {};
@@ -52,6 +53,7 @@ export const addItemRequest = (data) => {
       localStorage.setItem('cart', JSON.stringify(cart));
       dispatch(addToCart(data));
       dispatch(endRequest({ name: 'ADD_TO_CART' }));
+      await axios.post(`http://localhost:8000/api/sessions`, cart);
   
     } catch(e) {
       dispatch(errorRequest({ name: 'ADD_TO_CART', error: e.message }));

@@ -49,20 +49,10 @@
     .root {
 
         flex-direction: column;
-        .address {
-            p {
-                text-align: center;
-            }
-        }
         .sitemap {
             border-left: none;
             .sitemapContainer {
-
                 padding-left: 0;
-                a {
-                    padding-bottom: 10px;
-                    text-align: center;
-                }
             }
     
         }
@@ -78,7 +68,7 @@
             width: 100%;
         }
         h2 {
-            font-size: $base-size * 1.5;
+            font-size: $base-size * 1.2;
         }
     }
  }

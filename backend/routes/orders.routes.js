@@ -17,7 +17,7 @@ router.post('/orders', async (req, res,) => {
     if(products.length > 0) {
       try {
         const count = await Order.countDocuments();
-        const newOrder = new Order({products: products, totalAmount: totalAmount, shipping: shippingDetails, id: count + 1});    
+        const newOrder = new Order({products: products, totalAmount: totalAmount, shipping: shippingDetails, id: count + 1, status: 'confirmed'});    
         await newOrder.save();
         res.json(await Order.find());
       }

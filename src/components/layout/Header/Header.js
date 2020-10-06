@@ -1,5 +1,4 @@
-import React from 'react';
-import {useWindowDimensions} from '../../../hooks/useWindowDimensions';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
@@ -8,17 +7,25 @@ import {NavLink, Link} from 'react-router-dom';
 import {Logo} from '../../common/Logo/Logo';
 import {CartIcon} from '../../common/CartIcon/CartIcon';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import { connect } from 'react-redux';
+import { getCartItems} from '../../../redux/cartRedux.js';
 
 import styles from './Header.module.scss';
 import MenuIcon from '@material-ui/icons/Menu';
+import { motion,AnimatePresence } from 'framer-motion';
 
-const Component = ({className, children}) => {
+const variants = {
+  hidden: { left: '360px', right: '-360px', transition: {ease: 'linear'}},
+  visible: {left: 0, right: 0, transition: {ease: 'linear'}},
+};
 
-  const { height, width } = useWindowDimensions();
+const Component = ({className, basket}) => {
 
-  console.log(width);
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <div className={clsx(className, styles.root)}>
@@ -32,9 +39,23 @@ const Component = ({className, children}) => {
         <div className={styles.buttonsContainer}>
           <CartIcon/>
         </div>
-        <MenuIcon className={styles.menuIcon}></MenuIcon>
+        <div className={styles.menuIconWrapper}>
+          <MenuIcon className={styles.menuIcon} onClick={handleClick}></MenuIcon>
+          <AnimatePresence>
+            {isOpen ? (
+              <motion.div className={styles.menuList} variants={variants} initial='hidden' animate='visible' exit='hidden'>
+                <Link to='/all' onClick={handleClick}>ALL PRODUCTS</Link>
+                <Link to='/kits' onClick={handleClick}>KITS</Link>
+                <Link to='/kids' onClick={handleClick}>KIDS</Link>
+                <Link to='/books' onClick={handleClick}>BOOKS</Link>
+                <Link to='/accessories' onClick={handleClick}>GIFTS & ACCESSORIES</Link>
+                <Link to='/cart'onClick={handleClick}>SHOPPING BASKET {`(${basket.products.length})`}</Link>
+              </motion.div>
+            )
+              : null }
+          </AnimatePresence>
+        </div>
       </div>
-      
       <div className={styles.bottomNavigation}>
         <Link to='/all'>ALL PRODUCTS</Link>
         <Link to='/kits'>KITS</Link>
@@ -49,20 +70,16 @@ const Component = ({className, children}) => {
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  basket: PropTypes.array,
 };
 
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
-// });
+const mapStateToProps = state => ({
+  basket: getCartItems(state),
+});
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
-
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const Container = connect(mapStateToProps)(Component);
 
 export {
-  Component as Header,
-  // Container as Header,
+  Container as Header,
   Component as HeaderComponent,
 };
