@@ -3,6 +3,8 @@
 @import '../../../styles/settings.scss';
 
 .root {
+    position: absolute;
+    width: 100%;
     .details {
         display: flex;
         .media {

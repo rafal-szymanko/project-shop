@@ -4,6 +4,10 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    right: 5%;
     .card {
         margin: 0 auto;
         max-height: 150px;

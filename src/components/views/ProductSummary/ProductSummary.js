@@ -7,6 +7,9 @@ import { connect } from 'react-redux';
 import {getById, fetchItem} from '../../../redux/productRedux';
 import {getTotalAmount, addItemRequest, getCartItems} from '../../../redux/cartRedux';
 
+import { Footer } from '../../layout/Footer/Footer';
+
+
 import styles from './ProductSummary.module.scss';
 import CardMedia from '@material-ui/core/CardMedia';
 
@@ -16,6 +19,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import { Button } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import {motion} from 'framer-motion';
+import {pageTransition, pageVariants} from '../../../motion/pageTransition';
 
 const Component = ({className, product, fetchById, add, getAmount, basket}) => {
 
@@ -57,7 +62,7 @@ const Component = ({className, product, fetchById, add, getAmount, basket}) => {
   };
 
   return (
-    <div className={clsx(className, styles.root)}>
+    <motion.div className={clsx(className, styles.root)} initial={pageVariants.initial} animate={pageVariants.in} exit={pageVariants.out} transition={pageTransition}>
       {isNotEmpty(fetchedItem) ? 
         <div className={styles.details}>
           <CardMedia
@@ -119,7 +124,8 @@ const Component = ({className, product, fetchById, add, getAmount, basket}) => {
         </div>
         : <CircularProgress color="secondary" />
       }
-    </div>
+      <Footer/>
+    </motion.div>
   );
 };
 

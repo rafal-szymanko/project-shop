@@ -5,8 +5,11 @@ import clsx from 'clsx';
 
 import {Redirect} from 'react-router-dom';
 
+
 import { connect } from 'react-redux';
 import { getCartItems, removeItemRequest, updateCart } from '../../../redux/cartRedux.js';
+
+import { Footer } from '../../layout/Footer/Footer';
 
 import styles from './Cart.module.scss';
 import Card from '@material-ui/core/Card';
@@ -17,7 +20,8 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Button } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
-
+import {motion} from 'framer-motion';
+import {pageTransition, pageVariants} from '../../../motion/pageTransition';
 
 const Component = ({className, basket, remove, update}) => {
 
@@ -46,7 +50,7 @@ const Component = ({className, basket, remove, update}) => {
   };
 
   return (
-    <div className={clsx(className, styles.root)}>
+    <motion.div className={clsx(className, styles.root)} initial={pageVariants.initial} animate={pageVariants.in} exit={pageVariants.out} transition={pageTransition}>
       {products.length > 0 ? products.map(product => 
         <Card className={styles.card} key={product._id}>
           <CardMedia
@@ -107,7 +111,8 @@ const Component = ({className, basket, remove, update}) => {
         </div>
         : null
       }
-    </div>
+      <Footer/>
+    </motion.div>
   );
 };
 

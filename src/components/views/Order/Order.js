@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import {OrderForm} from '../../features/OrderForm/OrderForm';
+import { Footer } from '../../layout/Footer/Footer';
 
 import { connect } from 'react-redux';
 import { getCartItems } from '../../../redux/cartRedux.js';
@@ -11,7 +12,8 @@ import { getRequest} from '../../../redux/ordersRedux.js';
 
 import styles from './Order.module.scss';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import {motion} from 'framer-motion';
+import {pageTransition, pageVariants} from '../../../motion/pageTransition';
 
 const Component = ({className, basket, request}) => {
 
@@ -51,12 +53,13 @@ const Component = ({className, basket, request}) => {
 
 
   return (
-    <div className={clsx(className, styles.root)}>
+    <motion.div className={clsx(className, styles.root)} initial={pageVariants.initial} animate={pageVariants.in} exit={pageVariants.out} transition={pageTransition}>
       <div className={styles.wrapper}>
         <OrderForm /> 
         {renderMessage()}
       </div>
-    </div>
+      <Footer/>
+    </motion.div>
   );
 };
 

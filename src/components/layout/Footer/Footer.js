@@ -15,6 +15,20 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const Component = ({className}) => {
+  let scrollHeight = document.body.scrollHeight;
+
+  
+  const documentHeight = Math.max(
+    document.documentElement.clientHeight,
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.offsetHeight);
+ 
+
+  console.log(documentHeight);
+  
+
   return(
     <div className={clsx(className, styles.root)}>
       <div className={styles.address}>

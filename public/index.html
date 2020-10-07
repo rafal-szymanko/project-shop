@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="Browse United Direct, the official Manchester United store, for the 20-21 Man United clothing, apparel and Manchester United merchandise. Find Man Utd kits, jerseys, shirts, classic Manchester United kits, and more Man United merchandise." name="description">
     <title>Manchester United Store</title>
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-startup-image" href="images/splash/launch-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
@@ -33,7 +34,7 @@
     <div id="root"></div>
     <script>
       if('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('/sw.js')
+          navigator.serviceWorker.register('./sw.js')
               .then(function () {
                   console.log('Service Worker Registered');
               });

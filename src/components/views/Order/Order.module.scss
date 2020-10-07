@@ -1,6 +1,7 @@
 @import '../../../styles/settings.scss';
 
 .root {
+    position: absolute;
     .wrapper {
         display: flex;
         justify-content: space-around;

@@ -5,6 +5,7 @@ import clsx from 'clsx';
 
 import {ItemSummary} from '../../features/ItemSummary/ItemSummary';
 import {Baner} from '../../features/Baner/Baner';
+import { Footer } from '../../layout/Footer/Footer';
 
 import { connect } from 'react-redux';
 import {fetchBestsellers, getAllBestsellers} from '../../../redux/bestsellersRedux';
@@ -15,6 +16,8 @@ import styles from './Homepage.module.scss';
 import PhoneIcon from '@material-ui/icons/Phone';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn';
+import {motion} from 'framer-motion';
+import {pageTransition, pageVariants} from '../../../motion/pageTransition';
 
 import {isNotEmpty} from '../../../utils/checkIfObjNotEmpty';
 
@@ -26,7 +29,7 @@ const Component = ({className, bestsellers, fetchBestsellersItems, fetchAllItems
   const {kids, kits, accessories, books} = bestsellers;
     
   return(
-    <div className={clsx(className, styles.root)}>
+    <motion.div className={clsx(className, styles.root)} initial={pageVariants.initial} animate={pageVariants.in} exit={pageVariants.out} transition={pageTransition}>
       <Baner/>
       <div className={styles.container}>
         <div>
@@ -58,7 +61,8 @@ const Component = ({className, bestsellers, fetchBestsellersItems, fetchAllItems
           </div>
         </div>
       </div>
-    </div>
+      <Footer/>
+    </motion.div>
   );
 };
 
