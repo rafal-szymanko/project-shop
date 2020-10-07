@@ -15,20 +15,11 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const Component = ({className}) => {
-  let scrollHeight = document.body.scrollHeight;
-
   
-  const documentHeight = Math.max(
-    document.documentElement.clientHeight,
-    document.body.scrollHeight,
-    document.documentElement.scrollHeight,
-    document.body.offsetHeight,
-    document.documentElement.offsetHeight);
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+  };
  
-
-  console.log(documentHeight);
-  
-
   return(
     <div className={clsx(className, styles.root)}>
       <div className={styles.address}>
@@ -44,11 +35,11 @@ const Component = ({className}) => {
       <div className={styles.sitemap}>
         <div className={styles.sitemapContainer}>
           <h2>Sitemap</h2>
-          <Link to='/all'>All Products</Link>
-          <Link to='/kits'>Kits</Link>
-          <Link to='/kids'>Kids</Link>
-          <Link to='/books'>Books</Link>
-          <Link to='/accessories'>Gifts & Accessories</Link>
+          <Link to='/all' onClick={handleClick}>All Products</Link>
+          <Link to='/kits' onClick={handleClick}>Kits</Link>
+          <Link to='/kids' onClick={handleClick}>Kids</Link>
+          <Link to='/books' onClick={handleClick}>Books</Link>
+          <Link to='/accessories'onClick={handleClick}>Gifts & Accessories</Link>
         </div>
       </div>
       <div className={styles.newsletter}>

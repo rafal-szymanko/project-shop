@@ -24,7 +24,6 @@ const Component = ({className, subscribeNewsletter, request}) => {
     });
   };
   
-  console.log(request);
   const handleSubmit = async (event) => {
     event.preventDefault();
     subscribeNewsletter(formContent);

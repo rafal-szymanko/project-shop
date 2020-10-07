@@ -23,7 +23,10 @@ const Component = ({className, basket}) => {
 
   const [isOpen, setIsOpen] = useState(false);
   
-  const handleClick = () => {
+  const handleClick = (data) => {
+    if(data !== 'icon') {
+      window.scrollTo(0, 0);
+    }
     setIsOpen(!isOpen);
   };
 
@@ -40,11 +43,11 @@ const Component = ({className, basket}) => {
           <CartIcon/>
         </div>
         <div className={styles.menuIconWrapper}>
-          <MenuIcon className={styles.menuIcon} onClick={handleClick}></MenuIcon>
+          <MenuIcon className={styles.menuIcon} onClick={() => handleClick('icon')}></MenuIcon>
           <AnimatePresence>
             {isOpen ? (
               <motion.div className={styles.menuList} variants={variants} initial='hidden' animate='visible' exit='hidden'>
-                <Link to='/all' onClick={handleClick}>ALL PRODUCTS</Link>
+                <Link to='/all' onClick={handleClick} >ALL PRODUCTS</Link>
                 <Link to='/kits' onClick={handleClick}>KITS</Link>
                 <Link to='/kids' onClick={handleClick}>KIDS</Link>
                 <Link to='/books' onClick={handleClick}>BOOKS</Link>

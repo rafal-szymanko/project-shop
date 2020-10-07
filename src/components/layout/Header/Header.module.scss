@@ -79,24 +79,23 @@
     .root {
         .upperNavigation {
             position: fixed;
-            left: 0;
-            right: 0;
             background: $color-light;
             z-index: 2;
-
+            width: 90vw;
             .menuIconWrapper {
                 display: block;
                 .menuList {
                     position: absolute;
-                    left: 0;
-                    right: 0;
+                    left: 5%;
+                    right: 5%;
                     top: 50px;
-                    height: 80vh;
+                    height: 85vh;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-around;
                     align-items: center;
                     background-color: $color-first;
+                    border-radius: 30px;
                     a {
                         color: $color-light;
                         font-size: $base-size * 1.3;
