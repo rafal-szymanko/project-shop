@@ -26,7 +26,10 @@
             align-items: center;
         }
         .menuIconWrapper {
-                display: none;
+            display: none;
+            .menuIcon {
+                cursor: pointer;
+            }
         }
     }
     .bottomNavigation {

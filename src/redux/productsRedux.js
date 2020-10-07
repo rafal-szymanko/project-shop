@@ -8,6 +8,7 @@ export const getAllItemsForKids = ({products}) => products.kids;
 export const getAllBooks = ({products}) => products.books;
 export const getAllAccessories = ({products}) => products.accessories;
 
+
 /* action name creator */
 const reducerName = 'products';
 const createActionName = name => `app/${reducerName}/${name}`;

@@ -9,28 +9,28 @@ const reducerName = 'product';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
-const FETCH_START = createActionName('FETCH_START');
-const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
-const FETCH_ERROR = createActionName('FETCH_ERROR');
+const FETCH_PRODUCT_START = createActionName('FETCH_PRODUCT_START');
+const FETCH_PRODUCT_SUCCESS = createActionName('FETCH_PRODUCT_SUCCESS');
+const FETCH_PRODUCT_ERROR = createActionName('FETCH_PRODUCT_ERROR');
 
 /* action creators */
-export const fetchStarted = payload => ({ payload, type: FETCH_START });
-export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
-export const fetchError = payload => ({ payload, type: FETCH_ERROR });
+export const fetchProductStarted = payload => ({ payload, type: FETCH_PRODUCT_START });
+export const fetchProductSuccess = payload => ({ payload, type: FETCH_PRODUCT_SUCCESS });
+export const fetchProductError = payload => ({ payload, type: FETCH_PRODUCT_ERROR });
 
 /* thunk creators */
 
 export const fetchItem = (id) => {
 
   return (dispatch, getState) => {    
-    dispatch(fetchStarted());
+    dispatch(fetchProductStarted());
     axios
       .get(`http://localhost:8000/api/products/${id}`)
       .then(res => {
-        dispatch(fetchSuccess(res.data));
+        dispatch(fetchProductSuccess(res.data));
       })
       .catch(err => {
-        dispatch(fetchError(err.message || true));
+        dispatch(fetchProductError(err.message || true));
       });
   };
 };
@@ -38,7 +38,7 @@ export const fetchItem = (id) => {
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {
   switch (action.type) {
-    case FETCH_START: {
+    case FETCH_PRODUCT_START: {
       return {
         ...statePart,
         loading: {
@@ -47,7 +47,7 @@ export const reducer = (statePart = [], action = {}) => {
         },
       };
     }
-    case FETCH_SUCCESS: {
+    case FETCH_PRODUCT_SUCCESS: {
       return {
         ...statePart,
         loading: {
@@ -57,7 +57,7 @@ export const reducer = (statePart = [], action = {}) => {
         data: action.payload,
       };
     }
-    case FETCH_ERROR: {
+    case FETCH_PRODUCT_ERROR: {
       return {
         ...statePart,
         loading: {

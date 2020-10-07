@@ -17,10 +17,6 @@ import Select from '@material-ui/core/Select';
 import { Button } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-
-
-
-
 const Component = ({className, product, fetchById, add, getAmount, basket}) => {
 
   const [fetchedItem, setFetchedItem] = useState({});
