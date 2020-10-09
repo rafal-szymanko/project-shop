@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import {Header} from '../Header/Header';
+import { Search } from '../../common/Search/Search';
 
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
@@ -16,6 +17,7 @@ const Component = ({className, children}) => {
     <div className={clsx(className, styles.root)}>
       <Header/>
       {children}
+      <Search/>
     </div>
   );
 };

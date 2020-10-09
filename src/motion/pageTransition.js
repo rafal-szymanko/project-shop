@@ -1,7 +1,7 @@
 export const pageVariants = {
   initial : {
     opacity: 0,
-    x: '-100vw',
+    x: '100vw',
   },
   in: {
     opacity: 1,
@@ -9,7 +9,7 @@ export const pageVariants = {
   },
   out: {
     opacity: 0,
-    x: '100vw',
+    x: '-100vw',
   },
 };
 

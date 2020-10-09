@@ -2,14 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
 
 const bannersRoutes = require('./routes/banners.routes');
 const newsletterRoutes = require('./routes/newsletter.routes');
 const productsRoutes = require('./routes/products.routes');
 const ordersRoutes = require('./routes/orders.routes');
-const sessionsRoutes = require('./routes/sessions.routes');
 
 const app = express();
 
@@ -19,14 +16,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 /* MONGOOSE */
-mongoose.connect('mongodb://localhost:27017/ManUtdStore', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
+mongoose.connect('mongodb+srv://rafal-szymanko:1uaYomX2BkQNeALf@manutdstorecluster.zgypa.mongodb.net/ManUtdStoreDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 const db = mongoose.connection;
-
-app.use(session({
-  secret: '4f7WBXJamuf5sH',
-  store: new MongoStore({ mongooseConnection: db }),
-}));
-
 
 db.once('open', () => {
   console.log('Successfully connected to the database');
@@ -38,7 +29,6 @@ app.use('/api', productsRoutes);
 app.use('/api', bannersRoutes);
 app.use('/api', newsletterRoutes);
 app.use('/api', ordersRoutes);
-app.use('/api', sessionsRoutes);
 
 /* API ERROR PAGES */
 app.use('/api', (req, res) => {

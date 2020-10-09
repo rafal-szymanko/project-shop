@@ -93,6 +93,7 @@ if(local) {
       data: [],
       requests: [],
     },
+    filter : '',
   };
 }
 

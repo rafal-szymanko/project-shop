@@ -86,4 +86,5 @@ export const initialState = {
     data: [],
     requests: [],
   },
+  filter : '',
 };

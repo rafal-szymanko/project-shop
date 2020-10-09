@@ -8,6 +8,19 @@ export const getAllItemsForKids = ({products}) => products.kids;
 export const getAllBooks = ({products}) => products.books;
 export const getAllAccessories = ({products}) => products.accessories;
 
+export const getFilteredProducts = ({products, filter}) => {
+
+  const pattern = new RegExp(filter.searchPhrase, 'i');
+  if(filter.searchPhrase) {
+    const kits = products.kits.data.filter(kit => pattern.test(kit.name));
+    const kids = products.kids.data.filter(kid => pattern.test(kid.name));
+    const books = products.books.data.filter(book => pattern.test(book.name));
+    const accessories = products.accessories.data.filter(accessory => pattern.test(accessory.name));
+
+    const all = [...kits, ...kids, ...books, ...accessories];
+    return all;
+  }
+};
 
 /* action name creator */
 const reducerName = 'products';

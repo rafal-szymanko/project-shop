@@ -11,6 +11,7 @@ import { reducer as cartReducer } from './cartRedux';
 import { reducer as orderReducer } from './ordersRedux';
 import { reducer as newsletterReducer } from './newsletterRedux';
 import { reducer as bestsellersReducer } from './bestsellersRedux';
+import { reducer as filtersReducer } from './filtersRedux';
 
 // define reducers
 const reducers = {
@@ -21,6 +22,7 @@ const reducers = {
   order: orderReducer,
   newsletter: newsletterReducer,
   bestsellers: bestsellersReducer,
+  filter: filtersReducer,
 };
 
 // add blank reducers for initial state properties without reducers

@@ -52,9 +52,7 @@ export const addItemRequest = (data) => {
       }
       localStorage.setItem('cart', JSON.stringify(cart));
       dispatch(addToCart(data));
-      dispatch(endRequest({ name: 'ADD_TO_CART' }));
-      await axios.post(`http://localhost:8000/api/sessions`, cart);
-  
+      dispatch(endRequest({ name: 'ADD_TO_CART' }));  
     } catch(e) {
       dispatch(errorRequest({ name: 'ADD_TO_CART', error: e.message }));
     }

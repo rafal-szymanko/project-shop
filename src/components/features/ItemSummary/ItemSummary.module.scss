@@ -3,8 +3,8 @@
 @import '../../../styles/settings.scss';
 
 .root {
-    width: 18%;
-    padding: 20px 0;
+    width: 20%;
+    padding: 20px 1%;
     .card {
         margin: 0 auto;
         transition: 0.3;
@@ -36,7 +36,7 @@
 // Medium devices (tablets, less than 992px)
 @media (max-width: 991.98px) {
     .root {
-        width: 23%;
+        width: 25%;
     }
  }
 
@@ -44,7 +44,7 @@
  // Small devices (landscape phones, less than 768px)
 @media (max-width: 767.98px) { 
     .root {
-        width: 30%;
+        width: 33%;
         .content {
             .header {
                 font-size: $base-size;
