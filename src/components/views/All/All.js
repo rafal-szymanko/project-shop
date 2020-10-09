@@ -28,7 +28,6 @@ const Component = ({className, allProducts, fetchAllItems, filteredProducts}) =>
 
   return(
     <motion.div className={clsx(className, styles.root)} initial={pageVariants.initial} animate={pageVariants.in} exit={pageVariants.out} transition={pageTransition}>
-      {/* <Search/> */}
       {filteredProducts !== undefined ? 
         <div className={styles.items}>{filteredProducts.map(item =><ItemSummary key={item._id} {...item}/>)}</div>
         :

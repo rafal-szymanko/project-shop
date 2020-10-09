@@ -14,6 +14,6 @@ export const pageVariants = {
 };
 
 export const pageTransition = {
-  duration: 0.7,
+  duration: 1,
   ease: 'linear',
 };

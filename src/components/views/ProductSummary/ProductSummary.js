@@ -33,9 +33,6 @@ const Component = ({className, product, fetchById, add, getAmount, basket}) => {
   useEffect(() => {if(isNotEmpty(product)) {setFetchedItem(...product);}}, [product]);
   useEffect(() => {window.scrollTo(0, 0);});
 
-
-
-
   const quantity = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const handleOnChange = (event) => {

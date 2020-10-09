@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 /* selectors */
 export const getCartItems = ({cart}) => cart;
 export const getTotalAmount = ({cart}) => cart.totalAmount;
