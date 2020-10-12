@@ -16,8 +16,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 /* MONGOOSE */
-mongoose.connect('mongodb+srv://rafal-szymanko:1uaYomX2BkQNeALf@manutdstorecluster.zgypa.mongodb.net/ManUtdStoreDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
+mongoose.connect('mongodb://localhost:27017/ManUtdStore', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 const db = mongoose.connection;
+
 
 db.once('open', () => {
   console.log('Successfully connected to the database');

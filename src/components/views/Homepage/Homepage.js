@@ -8,8 +8,7 @@ import {Baner} from '../../features/Baner/Baner';
 import { Footer } from '../../layout/Footer/Footer';
 
 import { connect } from 'react-redux';
-import {fetchBestsellers, getAllBestsellers} from '../../../redux/bestsellersRedux';
-import {fetchAll} from '../../../redux/productsRedux';
+import {fetchAll, getAll} from '../../../redux/productsRedux';
 
 import styles from './Homepage.module.scss';
 
@@ -21,12 +20,11 @@ import {pageTransition, pageVariants} from '../../../motion/pageTransition';
 
 import {isNotEmpty} from '../../../utils/checkIfObjNotEmpty';
 
-const Component = ({className, bestsellers, fetchBestsellersItems, fetchAllItems}) => {
+const Component = ({className, fetchAllItems, allProducts}) => {
 
-  useEffect(() => {fetchBestsellersItems();}, [fetchBestsellersItems]);
   useEffect(() => {fetchAllItems();}, [fetchAllItems]);
 
-  const {kids, kits, accessories, books} = bestsellers;
+  const {kids, kits, accessories, books} = allProducts;
     
   return(
     <motion.div className={clsx(className, styles.root)} initial={pageVariants.initial} animate={pageVariants.in} exit={pageVariants.out} transition={pageTransition}>
@@ -36,10 +34,10 @@ const Component = ({className, bestsellers, fetchBestsellersItems, fetchAllItems
           <h2 className={styles.title}>Bestsellers</h2>
         </div>
         <div className={styles.items}>
-          {isNotEmpty(kits.data) ? kits.data.map(kit => <ItemSummary key={kit._id} {...kit}/>) : null}
-          {isNotEmpty(books.data) ? books.data.map(book => <ItemSummary key={book._id} {...book}/>) : null}
-          {isNotEmpty(kids.data) ? kids.data.map(kid => <ItemSummary key={kid._id} {...kid}/>) : null}
-          {isNotEmpty(accessories.data) ? accessories.data.map(accessory => <ItemSummary key={accessory._id} {...accessory}/>) : null}
+          {isNotEmpty(kits.data) ? kits.data.filter(kits => kits.bestseller === true).map(items => <ItemSummary key={items._id} {...items}/>) : null}
+          {isNotEmpty(books.data) ? books.data.filter(books => books.bestseller === true).map(items => <ItemSummary key={items._id} {...items}/>) : null}
+          {isNotEmpty(kids.data) ? kids.data.filter(kids => kids.bestseller === true).map(items => <ItemSummary key={items._id} {...items}/>) : null}
+          {isNotEmpty(kits.data) ? accessories.data.filter(accessories => accessories.bestseller === true).map(items => <ItemSummary key={items._id} {...items}/>) : null}
         </div>
       </div>
       <div className={styles.container}>
@@ -69,18 +67,17 @@ const Component = ({className, bestsellers, fetchBestsellersItems, fetchAllItems
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  bestsellers: PropTypes.object,
+  allProducts: PropTypes.object,
   fetchBestsellersItems: PropTypes.func,
   fetchAllItems: PropTypes.func,
 
 };
 
 const mapStateToProps = state => ({
-  bestsellers: getAllBestsellers(state),
+  allProducts: getAll(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchBestsellersItems: () => dispatch(fetchBestsellers()),
   fetchAllItems: () => dispatch(fetchAll()),
 });
 

@@ -12,7 +12,7 @@ import { addOrderRequest } from '../../../redux/ordersRedux.js';
 import styles from './OrderForm.module.scss';
 import { Button } from '@material-ui/core';
 
-const Component = ({className, children, basket, sendOrder, clearBasket}) => {
+const Component = ({className, basket, sendOrder, clearBasket}) => {
 
   const {totalAmount, products} = basket;
   const prop = 'image';
@@ -96,9 +96,9 @@ const Component = ({className, children, basket, sendOrder, clearBasket}) => {
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  basket: PropTypes.array,
   sendOrder: PropTypes.func,
   clearBasket: PropTypes.func,
+  basket: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 };
 
 const mapStateToProps = state => ({

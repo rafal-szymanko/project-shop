@@ -51,7 +51,7 @@ const Component = ({className, basket, remove, update}) => {
 
   return (
     <motion.div className={clsx(className, styles.root)} initial={pageVariants.initial} animate={pageVariants.in} exit={pageVariants.out} transition={pageTransition}>
-      {products.length > 0 ? products.map(product => 
+      {products.length > 0 ? products.map(product => (
         <Card className={styles.card} key={product._id}>
           <CardMedia
             className={styles.media}
@@ -103,6 +103,7 @@ const Component = ({className, basket, remove, update}) => {
           </CardContent>
         </Card>
       )
+      )
         : <h2 className={styles.emptyBasket}>Your shopping basket is empty</h2>
       }
       {products.length > 0 ? 
@@ -119,7 +120,7 @@ const Component = ({className, basket, remove, update}) => {
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  basket: PropTypes.array,
+  basket: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   remove: PropTypes.func,
   update: PropTypes.func,
 };

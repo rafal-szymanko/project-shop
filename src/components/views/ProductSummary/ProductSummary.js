@@ -138,7 +138,7 @@ Component.propTypes = {
   add: PropTypes.func,
   totalAmount: PropTypes.func,
   getAmount: PropTypes.number,
-  basket: PropTypes.array,
+  basket: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 };
 
 const mapStateToProps = state => ({

@@ -67,7 +67,7 @@ const Component = ({className, basket, request}) => {
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  basket: PropTypes.array,
+  basket: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   sendOrder: PropTypes.func,
   request: PropTypes.object,
 };

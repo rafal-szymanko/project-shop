@@ -15,9 +15,9 @@ import {ProductSummary} from '../../views/ProductSummary/ProductSummary';
 import {Cart} from '../../views/Cart/Cart';
 import {Order} from '../../views/Order/Order';
 
-import {motion, AnimatePresence} from 'framer-motion';
+import {AnimatePresence} from 'framer-motion';
 
-const Component = ({className, children}) => {
+const Component = () => {
   const location = useLocation();
   return (
     <AnimatePresence>
@@ -46,18 +46,7 @@ Component.propTypes = {
   className: PropTypes.string,
 };
 
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
-
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-
 export {
   Component as Location,
-  // Container as Location,
   Component as LocationComponent,
 };

@@ -16,7 +16,7 @@ import {pageTransition, pageVariants} from '../../../motion/pageTransition';
 import {isNotEmpty} from '../../../utils/checkIfObjNotEmpty';
 
 
-const Component = ({className, children, accessories, fetchAllAccessories}) => {
+const Component = ({className, accessories, fetchAllAccessories}) => {
 
   useEffect(() => {fetchAllAccessories();}, [fetchAllAccessories]); 
 
@@ -48,7 +48,6 @@ const mapDispatchToProps = dispatch => ({
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  // Component as GiftsAndAccesories,
   Container as GiftsAndAccesories,
   Component as GiftsAndAccesoriesComponent,
 };

@@ -72,8 +72,8 @@ const Component = ({className, basket}) => {
 
 Component.propTypes = {
   children: PropTypes.node,
+  basket: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   className: PropTypes.string,
-  basket: PropTypes.array,
 };
 
 const mapStateToProps = state => ({

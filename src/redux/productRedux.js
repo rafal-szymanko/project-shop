@@ -22,7 +22,7 @@ export const fetchProductError = payload => ({ payload, type: FETCH_PRODUCT_ERRO
 
 export const fetchItem = (id) => {
 
-  return (dispatch, getState) => {    
+  return (dispatch, getState) => {
     dispatch(fetchProductStarted());
     axios
       .get(`http://localhost:8000/api/products/${id}`)
