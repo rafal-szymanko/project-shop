@@ -1,13 +1,13 @@
 {
-  "name": "bulletin-board",
+  "name": "store",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "run-p start:* ",
+    "start": "node backend/server.js",
     "start-silent": "run-p start > /dev/null",
     "start:react": "react-scripts start",
     "start-and-test": "run-p start-silent test ",
-    "build": "react-scripts build",
+    "build": "cd client && yarn install && yarn build",
     "test": "react-scripts test --noStackTrace",
     "test-all": "react-scripts test --watchAll=false --noStackTrace",
     "test-related": "react-scripts test --watchAll=false --noStackTrace --findRelatedTests",
