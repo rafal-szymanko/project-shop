@@ -6,7 +6,7 @@ The project is an exemplary store page. The project was created in order to lear
 
 ## Demo
 
-The project demo can be found at the following link: https://massive-glyph-288308.web.app
+The project demo can be found at the following link: https://man-utd-store.herokuapp.com
 
 ## Available Scripts
 
