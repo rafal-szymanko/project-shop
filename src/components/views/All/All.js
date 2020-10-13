@@ -17,7 +17,7 @@ import {pageTransition, pageVariants} from '../../../motion/pageTransition';
 import {isNotEmpty} from '../../../utils/checkIfObjNotEmpty';
 
 
-const Component = ({className, allProducts, fetchAllItems, filteredProducts}) => {
+const Component = ({className, allProducts, fetchAllItems}) => {
 
   useEffect(() => {fetchAllItems();}, [fetchAllItems]);
 
@@ -36,7 +36,6 @@ const Component = ({className, allProducts, fetchAllItems, filteredProducts}) =>
 };
 
 Component.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
   fetchAllItems: PropTypes.func,
   searchPhrase: PropTypes.func,

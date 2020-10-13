@@ -21,7 +21,6 @@ const Component = ({className, banners, fetchBanners}) => {
     <div className={clsx(className, styles.root)}>
       <Carousel animation={'slide'} >
         {isNotEmpty(banners) ? banners.map(banner => <Paper key={banner._id} className={styles.paper}><img alt={banner.alt} className={styles.image}src={`http://localhost:8000/images/${banner.image}`}></img></Paper>) : null}
-        {/* {items.map((item, i) => <Paper key={styles.img} className={styles.paper}><img alt={'banner'} className={styles.image}src={item.img}></img></Paper>)} */}
       </Carousel>
     </div>
   );
