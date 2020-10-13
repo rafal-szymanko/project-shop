@@ -4,7 +4,7 @@ import { KidsComponent } from './Kids';
 
 describe('Component Kids', () => {
   it('should render without crashing', () => {
-    const component = shallow(<KidsComponent />);
+    const component = shallow(<KidsComponent forKids={{}} />);
     expect(component).toBeTruthy();
   });
 });

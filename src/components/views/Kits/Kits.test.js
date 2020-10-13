@@ -4,7 +4,7 @@ import { KitsComponent } from './Kits';
 
 describe('Component Kits', () => {
   it('should render without crashing', () => {
-    const component = shallow(<KitsComponent />);
+    const component = shallow(<KitsComponent kits={{}}/>);
     expect(component).toBeTruthy();
   });
 });

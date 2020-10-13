@@ -11,7 +11,7 @@ import styles from './CartIcon.module.scss';
 
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import Button from '@material-ui/core/Button';
-const Component = ({className, children, cart}) => {
+const Component = ({className, cart}) => {
   return(
     <div className={clsx(className, styles.root)}>
       <Link to={'/cart'}>
