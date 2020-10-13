@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const bannersRoutes = require('./routes/banners.routes');
 const newsletterRoutes = require('./routes/newsletter.routes');
@@ -16,7 +17,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 /* MONGOOSE */
-mongoose.connect('mongodb://localhost:27017/ManUtdStore', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@manutdstorecluster.zgypa.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
+
 const db = mongoose.connection;
 
 
