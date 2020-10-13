@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Project description
 
 The project is an exemplary store page. The project was created in order to learn React, Express.js, MongoDB.
@@ -34,3 +32,6 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+
+https://github.com/rafal-szymanko/project-shop/commit/a8818e26b5e05c63bcc9909ba5c96d0aee2f115f
