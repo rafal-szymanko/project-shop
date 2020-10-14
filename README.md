@@ -2,10 +2,6 @@
 
 The project is an exemplary store page. The project was created in order to learn React, Express.js, MongoDB.
 
-## Demo
-
-The project demo can be found at the following link: https://man-utd-store.herokuapp.com
-
 ## Available Scripts
 
 In the project directory, you can run:
